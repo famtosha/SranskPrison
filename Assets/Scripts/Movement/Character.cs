@@ -4,11 +4,7 @@ public class Character : MonoBehaviour, ICharacter
 {
     [SerializeField] private GameObject selectIcon = null;
     protected Move move;
-
-    public virtual void SpectialUse()
-    {
-
-    }
+    private bool isActive = false;
 
     public void Awake()
     {
@@ -17,17 +13,22 @@ public class Character : MonoBehaviour, ICharacter
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) SpectialUse();
+        if (isActive) CharacterUpdate();
     }
 
-    public virtual void Select()
+    public virtual void CharacterUpdate()
     {
-        selectIcon.SetActive(true);
-        move.enabled = true;
+
     }
-    public virtual void Deselect()
+
+    public virtual void Select() => ChangState(true);
+
+    public virtual void Deselect() => ChangState(false);
+
+    private void ChangState(bool state)
     {
-        selectIcon.SetActive(false);
-        move.enabled = false;
+        selectIcon.SetActive(state);
+        move.enabled = state;
+        isActive = state;
     }
 }

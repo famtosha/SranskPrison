@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ZadrCharacter : Character
 {
-    public override void SpectialUse()
-    {
-        Hack();
-    }
-
     public void Hack()
     {
 

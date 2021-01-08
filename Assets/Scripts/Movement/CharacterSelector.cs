@@ -31,7 +31,6 @@ public class CharacterSelector : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N)) selectedCharacter--;
-        if (Input.GetKeyDown(KeyCode.M)) selectedCharacter++;
+        if (Input.GetKeyDown(KeyCode.LeftControl)) selectedCharacter++;
     }
 }

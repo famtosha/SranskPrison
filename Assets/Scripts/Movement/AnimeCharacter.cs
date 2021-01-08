@@ -10,6 +10,7 @@ public class AnimeCharacter : Character
         get => _isDuck;
         set
         {
+            if (value == _isDuck) return;
             _isDuck = value;
             if (_isDuck)
             {                
@@ -21,12 +22,14 @@ public class AnimeCharacter : Character
                 move.moveSpeed = 15;
                 transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
             }
-            print(transform.localScale);
         }
     }
 
-    public override void SpectialUse()
+    public override void CharacterUpdate()
     {
-        isDuck = !isDuck;
+        base.CharacterUpdate();
+        if (Input.GetKeyDown(KeyCode.K)) isDuck = true;
+        if (Input.GetKeyUp(KeyCode.K)) isDuck = false;
+        if (Input.GetKeyDown(KeyCode.J)) move.Jump();
     }
 }
