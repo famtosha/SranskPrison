@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ZadrCharacter : Character
 {
-    public void Hack()
+    public bool isSleeping = false;
+    public void Sleep()
     {
+        isSleeping = true;
 
+
+
+        isSleeping = false;
     }
 }

@@ -5,27 +5,37 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public GameObject playerVisual;
     public float moveSpeed;
-
+    public LayerMask floor;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        Vector3 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0) * Time.deltaTime * moveSpeed;
+        Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
         moveDirection = transform.TransformDirection(moveDirection);
-        rb.MovePosition(transform.position + moveDirection);
+        var positionOffset = (moveDirection * moveSpeed) + (Physics2D.gravity * rb.gravityScale);
+        rb.MovePosition(rb.position + positionOffset * Time.deltaTime);
+        UpdateLookDirection(moveDirection.x);
     }
 
-    public bool IsGounded => true;
+    public void UpdateLookDirection(float xAxis)
+    {
+        if (xAxis > 0) playerVisual.transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (xAxis < 0) playerVisual.transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+
+    public bool IsGounded => Physics2D.Raycast(transform.position, -transform.up, 1, floor);
 
     public void Jump()
     {
+        print(IsGounded);
         if (IsGounded)
         {
-            rb.AddForce(transform.up * 500);
+            rb.AddForce(transform.up * 5000);
         }
     }
 }

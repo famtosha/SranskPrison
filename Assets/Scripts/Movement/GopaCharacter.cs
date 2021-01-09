@@ -21,6 +21,7 @@ public class CD
 public class GopaCharacter : Character
 {
     public GameObject bulletPrefub;
+    public Gun gun;
     public CD meleeCD = new CD(1);
     public CD weaponCD = new CD(0.5f);
 
@@ -41,8 +42,7 @@ public class GopaCharacter : Character
     private void Shoot()
     {
         weaponCD.Reset();
-        Instantiate(bulletPrefub, transform.position, transform.rotation).GetComponent<Rigidbody>().AddForce(transform.right * 1000);
-        Instantiate(bulletPrefub, transform.position, transform.rotation).GetComponent<Rigidbody>().AddForce(-transform.right * 1000);
+        gun.Shoot(bulletPrefub);
     }
 
     private void MeleeAttack()
