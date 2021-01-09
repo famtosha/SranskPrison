@@ -11,9 +11,14 @@ public class Panel : MonoBehaviour, IInteraction
     public void HideInfo() => Info.SetActive(false);
     public void ShowInfo() => Info.SetActive(true);
 
+    protected virtual bool CanUse()
+    {
+        return !isActive;
+    }
+
     public void Use()
     {
-        if (!isActive)
+        if (CanUse())
         {
             foreach (GameObject door in doors)
             {

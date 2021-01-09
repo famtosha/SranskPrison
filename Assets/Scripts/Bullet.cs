@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.TryGetComponent<IEnemy>(out IEnemy enemy))
+        if(collision.gameObject.TryGetComponent(out IEnemy enemy))
         {
             enemy.DealDamage(30);
         }

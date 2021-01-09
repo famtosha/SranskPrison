@@ -23,7 +23,7 @@ public class GopaCharacter : Character
     public GameObject bulletPrefub;
     public Gun gun;
     public CD meleeCD = new CD(1);
-    public CD weaponCD = new CD(0.5f);
+    public CD weaponCD = new CD(1);
 
     public override void CharacterUpdate()
     {
