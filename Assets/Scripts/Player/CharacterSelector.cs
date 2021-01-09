@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CharacterSelector : MonoBehaviour
 {
+    public static CharacterSelector instance;
     public Character[] characters = new Character[3];
+    public Inventory playersInventory = new Inventory();
     public Character currentCharacter => characters[_selectedCharacter];
     private int _selectedCharacter = 0;
     public int selectedCharacter
@@ -22,6 +24,7 @@ public class CharacterSelector : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
         foreach (var item in characters)
         {
             item.Deselect();

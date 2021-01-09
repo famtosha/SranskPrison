@@ -3,27 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CD
-{
-    public float cd;
-    public float cdLeft;
-
-    public bool isReady => cdLeft < 0;
-    public void UpdateTimer(float time) => cdLeft -= time;
-    public void Reset() => cdLeft = cd;
-
-    public CD(float cd)
-    {
-        this.cd = cd;
-    }
-}
-
 public class GopaCharacter : Character
 {
+    public override int playerID => 1;
+
     public GameObject bulletPrefub;
     public Gun gun;
-    public CD meleeCD = new CD(1);
-    public CD weaponCD = new CD(1);
+    public CoolDown meleeCD = new CoolDown(1);
+    public CoolDown weaponCD = new CoolDown(1);
 
     public override void CharacterUpdate()
     {

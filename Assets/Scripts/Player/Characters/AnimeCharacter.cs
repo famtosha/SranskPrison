@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimeCharacter : Character
 {
+    public override int playerID  => 0; 
+
     private bool _isDuck = false;
     public bool isDuck
     {

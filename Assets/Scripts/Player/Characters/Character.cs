@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour, ICharacter
+public class Character : MonoBehaviour
 {
     [SerializeField] private GameObject selectIcon = null;
     protected Move move;
     private bool isActive = false;
-
-    public GameObject itemInArm;
+    public virtual int playerID { get; }
 
     public void Awake()
     {
@@ -15,26 +14,18 @@ public class Character : MonoBehaviour, ICharacter
 
     public void PickupItem(PickupableItem item)
     {
-        if (!isActive && itemInArm != null) return;
-
-        item.gameObject.transform.SetParent(gameObject.transform);
-        itemInArm = item.gameObject;
-        itemInArm.GetComponent<Collider2D>().enabled = false;
-    }
-
-    public void DropItem()
-    {
-        if (itemInArm == null) return;
-
-        itemInArm.GetComponent<Collider2D>().enabled = true;
-        itemInArm.gameObject.transform.SetParent(null);
-        itemInArm = null;
+        if (CharacterSelector.instance.playersInventory.hasItem(playerID))
+        {
+            if(CharacterSelector.instance.playersInventory.AddItemToInventory(playerID, item.item))
+            {
+                Destroy(item);
+            }
+        }
     }
 
     private void Update()
     {
         if (isActive) CharacterUpdate();
-        if (Input.GetKeyDown(KeyCode.V) && isActive) DropItem();
     }
 
     public virtual void CharacterUpdate()
