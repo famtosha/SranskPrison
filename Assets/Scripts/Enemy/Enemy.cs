@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour, IDamagable
     public LayerMask playerLayer;
     public Gun gun;
     public GameObject bulletPrefub;
-    public float lookDirection = 1;
+    public float lookDistance = 1;
 
-    public bool CanSeePlayer => Physics2D.Raycast(transform.position, transform.right, lookDirection, playerLayer);
+    public bool CanSeePlayer => Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer);
 
     public void DealDamage(float damage)
     {
@@ -29,6 +29,6 @@ public class Enemy : MonoBehaviour, IDamagable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.right * lookDirection);
+        Gizmos.DrawLine(transform.position, transform.position + transform.right * lookDistance);
     }
 }

@@ -147,10 +147,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   gun: {fileID: 4331912061796030702}
   bulletPrefub: {fileID: 6903593669887284613, guid: 6ade37ee7b49a264ebe2d3c17c757c19, type: 3}
-  lookDirection: 5
+  lookDistance: 4
 --- !u!1001 &7049831879067925002
 PrefabInstance:
   m_ObjectHideFlags: 0
