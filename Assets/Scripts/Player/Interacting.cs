@@ -6,10 +6,14 @@ public class Interacting : MonoBehaviour
 {
     private IInteraction itemNowTouch = null;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && itemNowTouch != null) itemNowTouch.Use();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var interaction = collision.gameObject.GetComponent<IInteraction>();
-        if (interaction != null)
+        if (collision.gameObject.TryGetComponent(out IInteraction interaction))
         {
             itemNowTouch = interaction;
             interaction.ShowInfo();
@@ -18,18 +22,10 @@ public class Interacting : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (itemNowTouch != null)
+        if (itemNowTouch != null && collision.gameObject.GetComponent<IInteraction>() == itemNowTouch)
         {
-            if (collision.gameObject.GetComponent<IInteraction>() == itemNowTouch)
-            {
-                itemNowTouch.HideInfo();
-                itemNowTouch = null;
-            }
+            itemNowTouch.HideInfo();
+            itemNowTouch = null;
         }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && itemNowTouch != null) itemNowTouch.Use();
     }
 }

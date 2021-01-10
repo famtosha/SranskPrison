@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Item : ScriptableObject
+public class Item
 {
     public Sprite itemSprite;
 }

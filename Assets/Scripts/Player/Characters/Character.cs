@@ -14,11 +14,11 @@ public class Character : MonoBehaviour
 
     public void PickupItem(PickupableItem item)
     {
-        if (CharacterSelector.instance.playersInventory.hasItem(playerID))
+        if (!CharacterSelector.instance.playersInventory.hasItem(playerID))
         {
             if(CharacterSelector.instance.playersInventory.AddItemToInventory(playerID, item.item))
             {
-                Destroy(item);
+                item.DestroyItem();
             }
         }
     }

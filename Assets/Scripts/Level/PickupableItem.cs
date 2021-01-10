@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PickupableItem : MonoBehaviour
 {
-    public Item item;
-    public int sos;
+    public Item item = new Item();
+    public Sprite sprite;
+
+    private void Awake()
+    {
+        item.itemSprite = sprite;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +21,7 @@ public class PickupableItem : MonoBehaviour
         }
     }
 
-    //on use
+    //on pickup
     public void DestroyItem()
     {
         Destroy(gameObject);

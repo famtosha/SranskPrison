@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class Inventory
 {
-    public event Action<int, Item> SlotChanged;
+    public static event Action<int, Item> SlotChanged;
     public Item[] inventory = new Item[3];
 
+    public void ItemUpdate(int playerID)
+    {
+        SlotChanged?.Invoke(playerID, inventory[playerID]);
+    }
 
     public bool AddItemToInventory(int playerID, Item item)
     {
@@ -15,17 +19,27 @@ public class Inventory
         if (inventory[playerID] == null)
         {
             inventory[playerID] = item;
-            SlotChanged?.Invoke(playerID, item);
+            ItemUpdate(playerID);
             result = true;
         }
         return result;
     }
 
-    public bool hasItem(int playerID) => inventory[playerID] != null;
+    public bool hasItem(int playerID)
+    {
+        return inventory[playerID] != null;
+    }
+
+    public void SwitchItems(int firstPlayerID, int secondPlayerID)
+    {
+        var temp = inventory[firstPlayerID];
+        inventory[firstPlayerID] = inventory[secondPlayerID];
+        inventory[secondPlayerID] = temp;
+    }
 
     public void DestoryItem(int playerID)
     {
         inventory[playerID] = null;
-        SlotChanged?.Invoke(playerID, null);
+        ItemUpdate(playerID);
     }
 }

@@ -24,13 +24,13 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void ConnectUI(Inventory inventory)
+    private void OnEnable()
     {
-        inventory.SlotChanged += OnSlotChanged;
+        Inventory.SlotChanged += OnSlotChanged;
     }
 
-    public void DisconnectUI(Inventory inventory)
+    private void OnDisable()
     {
-        inventory.SlotChanged -= OnSlotChanged;
+        Inventory.SlotChanged -= OnSlotChanged;
     }
 }
