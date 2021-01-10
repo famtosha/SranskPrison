@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IDamagable
 {
     [SerializeField] private GameObject selectIcon = null;
     protected Move move;
@@ -10,6 +10,11 @@ public class Character : MonoBehaviour
     public void Awake()
     {
         move = GetComponent<Move>();
+    }
+
+    public virtual void DealDamage(float damage)
+    {
+        Debug.LogError("player ded x_x");
     }
 
     public void PickupItem(PickupableItem item)
@@ -23,12 +28,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (isActive) CharacterUpdate();
+        if (isActive) ActiveUpdate();
     }
 
-    public virtual void CharacterUpdate()
+    protected virtual void ActiveUpdate()
     {
 
     }

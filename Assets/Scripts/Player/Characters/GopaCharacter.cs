@@ -12,11 +12,16 @@ public class GopaCharacter : Character
     public CoolDown meleeCD = new CoolDown(1);
     public CoolDown weaponCD = new CoolDown(1);
 
-    public override void CharacterUpdate()
+    protected override void ActiveUpdate()
     {
-        base.CharacterUpdate();
+        base.ActiveUpdate();
         if (Input.GetKey(KeyCode.J) && weaponCD.isReady) Shoot();
-        if (Input.GetKeyDown(KeyCode.Space) && meleeCD.isReady) MeleeAttack();
+        if (Input.GetKeyDown(KeyCode.Space) && meleeCD.isReady) MeleeAttack();       
+    }
+
+    protected override void Update()
+    {
+        base.Update();
         UpdateTimers();
     }
 

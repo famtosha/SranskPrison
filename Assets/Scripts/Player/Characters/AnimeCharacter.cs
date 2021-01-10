@@ -27,9 +27,9 @@ public class AnimeCharacter : Character
         }
     }
 
-    public override void CharacterUpdate()
+    protected override void ActiveUpdate()
     {
-        base.CharacterUpdate();
+        base.ActiveUpdate();
         if (Input.GetKeyDown(KeyCode.K)) isDuck = true;
         if (Input.GetKeyUp(KeyCode.K)) isDuck = false;
         if (Input.GetKeyDown(KeyCode.J)) move.Jump();

@@ -3260,7 +3260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectIcon: {fileID: 1731824601}
-  isSleeping: 0
+  sleepDuration: 8
+  sleepCoolDownDuration: 8
 --- !u!114 &1480252678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4372,6 +4373,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 365720321}
     m_Modifications:
+    - target: {fileID: 4331912061796030703, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5745994706689198665, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6578087223997852244, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
+      propertyPath: lookDirection
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6578087223997852244, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985438224222583486, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8864508766845773891, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.58
