@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class PickupableItem : MonoBehaviour
 {
-    public Item item = new Item();
-    public Sprite sprite;
-
-    private void Awake()
-    {
-        item.itemSprite = sprite;
-    }
+    public Item item;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

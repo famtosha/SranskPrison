@@ -8,6 +8,8 @@ public class Panel : MonoBehaviour, IInteraction
     public GameObject Info;
     public List<GameObject> doors;
 
+    public virtual OpenRequire openType => OpenRequire.Nothing;
+
     public void HideInfo() => Info.SetActive(false);
     public void ShowInfo() => Info.SetActive(true);
 
@@ -16,15 +18,25 @@ public class Panel : MonoBehaviour, IInteraction
         return !isActive;
     }
 
-    public void Use()
+    protected void Use()
     {
         if (CanUse())
         {
             foreach (GameObject door in doors)
             {
-                door.GetComponent<IInteraction>().Use();
+                door.GetComponent<IInteraction>().UseByAnotherObject();
             }
             isActive = !isActive;
         }
+    }
+
+    public virtual void UseByCharacter(UseAction use)
+    {
+        Use();
+    }
+
+    public virtual void UseByAnotherObject()
+    {
+        Use();
     }
 }

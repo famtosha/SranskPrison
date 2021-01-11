@@ -5,6 +5,7 @@ using UnityEngine;
 public class ZadrCharacter : Character
 {
     public override int playerID => 2;
+    protected override bool isHacker => true;
     public float sleepDuration = 8;
     public float sleepCoolDownDuration = 16;
     private Rigidbody2D rb;

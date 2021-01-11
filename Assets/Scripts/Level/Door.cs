@@ -8,13 +8,25 @@ public class Door : MonoBehaviour, IInteraction
     public void ShowInfo(){}
     private Animator doorOpenAnimation;
 
+    public OpenRequire openType => OpenRequire.Closed;
+
     private void Start()
     {
         doorOpenAnimation = GetComponent<Animator>();
     }
 
-    public void Use()
+    protected virtual void Use()
     {
         doorOpenAnimation.Play("DoorOpen");
+    }
+
+    public void UseByAnotherObject()
+    {
+        Use();
+    }
+
+    public void UseByCharacter(UseAction use)
+    {
+        
     }
 }

@@ -3,13 +3,17 @@ using UnityEngine;
 public class Character : MonoBehaviour, IDamagable
 {
     [SerializeField] private GameObject selectIcon = null;
+    protected virtual bool isHacker => false;
+    public UseAction useAction => new UseAction(isHacker, CharacterSelector.instance.playersInventory.inventory[playerID]);
     protected Move move;
+    protected Interacting interacting;
     private bool isActive = false;
     public virtual int playerID { get; }
 
     public void Awake()
     {
         move = GetComponent<Move>();
+        interacting = GetComponent<Interacting>();
     }
 
     public virtual void DealDamage(float damage)
@@ -25,6 +29,14 @@ public class Character : MonoBehaviour, IDamagable
             {
                 item.DestroyItem();
             }
+        }
+    }
+
+    public void Trade(int playerID)
+    {
+        if(playerID != this.playerID)
+        {
+            CharacterSelector.instance.playersInventory.SwitchItems(playerID, this.playerID);
         }
     }
 
@@ -46,6 +58,7 @@ public class Character : MonoBehaviour, IDamagable
     {
         selectIcon.SetActive(state);
         move.enabled = state;
+        interacting.enabled = state;
         isActive = state;
     }
 }

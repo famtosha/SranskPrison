@@ -35,6 +35,8 @@ public class Inventory
         var temp = inventory[firstPlayerID];
         inventory[firstPlayerID] = inventory[secondPlayerID];
         inventory[secondPlayerID] = temp;
+        ItemUpdate(firstPlayerID);
+        ItemUpdate(secondPlayerID);
     }
 
     public void DestoryItem(int playerID)

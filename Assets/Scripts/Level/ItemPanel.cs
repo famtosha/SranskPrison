@@ -2,23 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPanel : Panel, IInterationWithItem
+public class ItemPanel : Panel
 {
-    public PickupableItem requireItem;
+    public override OpenRequire openType => OpenRequire.Item;
+    public int requireItemID;
 
-    public bool UseWithItem(PickupableItem item)
+    public override void UseByCharacter(UseAction use)
     {
-        bool result = false;
-        if(item == requireItem)
-        {
-            Use();
-            result = true;
-        }
-        return result;
-    }
-
-    protected override bool CanUse()
-    {
-        return false;
+        if(use?.item.itemID == requireItemID) base.UseByCharacter(use);
     }
 }

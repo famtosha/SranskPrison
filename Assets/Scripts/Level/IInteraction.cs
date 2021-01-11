@@ -1,6 +1,8 @@
 public interface IInteraction
 {
-    void Use();
+    void UseByCharacter(UseAction use);
+    void UseByAnotherObject();
+    OpenRequire openType { get; }
     void ShowInfo();
     void HideInfo();
 }
