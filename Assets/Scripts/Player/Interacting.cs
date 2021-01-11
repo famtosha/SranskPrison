@@ -37,7 +37,9 @@ public class Interacting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && itemNowTouch != null) itemNowTouch.UseByCharacter(character.useAction);
+        bool isUsed = false;
+        if (Input.GetKeyDown(KeyCode.E) && itemNowTouch != null) itemNowTouch.UseByCharacter(character.useAction, out isUsed);
+        if (isUsed) character.RemoveItem();
         if (Input.GetKeyDown(KeyCode.T) && characterNowTouch != null) characterNowTouch.Trade(character.playerID);
     }
 

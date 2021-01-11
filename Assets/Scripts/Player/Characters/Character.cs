@@ -32,6 +32,11 @@ public class Character : MonoBehaviour, IDamagable
         }
     }
 
+    public void RemoveItem()
+    {
+        CharacterSelector.instance.playersInventory.DestoryItem(playerID);
+    }
+
     public void Trade(int playerID)
     {
         if(playerID != this.playerID)

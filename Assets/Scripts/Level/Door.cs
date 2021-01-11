@@ -25,8 +25,8 @@ public class Door : MonoBehaviour, IInteraction
         Use();
     }
 
-    public void UseByCharacter(UseAction use)
+    public void UseByCharacter(UseAction use, out bool isUsed)
     {
-        
+        isUsed = false;
     }
 }
