@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,9 @@ public class Interacting : MonoBehaviour
         get => _characterNowTouch;
         set
         {
-            GiveItemInfo.instance.HideInfo();
+            GiveItemInfo.instance?.HideInfo();
             _characterNowTouch = value;
-            if (_characterNowTouch != null) GiveItemInfo.instance.ShowInfo();
+            if (_characterNowTouch != null) GiveItemInfo.instance?.ShowInfo();
         }
     }
 
@@ -53,5 +54,13 @@ public class Interacting : MonoBehaviour
     {
         if (itemNowTouch != null && collision.gameObject.GetComponent<IInteraction>() == itemNowTouch) itemNowTouch = null;
         if (characterNowTouch != null && collision.gameObject.GetComponent<Character>() == characterNowTouch) characterNowTouch = null;
+    }
+
+    public class Shitting<T>
+    {
+        public T nowToch;
+        public Action exitAction;
+        public Action enterAction;
+        public KeyCode useKey;
     }
 }

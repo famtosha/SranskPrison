@@ -6,7 +6,7 @@ public class Panel : MonoBehaviour, IInteraction
 {
     private bool isActive = false;
     public GameObject Info;
-    public List<GameObject> doors;
+    public List<GameObject> doors = new List<GameObject>();
 
     public virtual OpenRequire openType => OpenRequire.Nothing;
 
@@ -16,6 +16,19 @@ public class Panel : MonoBehaviour, IInteraction
     protected virtual bool CanUse()
     {
         return !isActive;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (doors?.Count < 1) return;
+        foreach (var door in doors)
+        {       
+            if(door != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(transform.position, door.transform.position);           
+            }
+        }
     }
 
     protected void Use()
