@@ -12,17 +12,21 @@ public class GopaCharacter : Character
     public CoolDown meleeCD = new CoolDown(1);
     public CoolDown weaponCD = new CoolDown(1);
 
+    private bool holdZadr = false;
+
     protected override void ActiveUpdate()
     {
         base.ActiveUpdate();
-        if (Input.GetKey(KeyCode.J) && weaponCD.isReady) Shoot();
-        if (Input.GetKeyDown(KeyCode.Space) && meleeCD.isReady) MeleeAttack();       
+        if (Input.GetKey(KeyCode.J) && weaponCD.isReady && !holdZadr) Shoot();
+        if (Input.GetKeyDown(KeyCode.Space) && meleeCD.isReady && !holdZadr) MeleeAttack();
+        if (Input.GetKeyDown(KeyCode.K) && !holdZadr) PickupZadr();
     }
 
     protected override void Update()
     {
         base.Update();
         UpdateTimers();
+        if (holdZadr) UpdateZadrPosition();
     }
 
     public void UpdateTimers()
@@ -40,5 +44,34 @@ public class GopaCharacter : Character
     private void MeleeAttack()
     {
         meleeCD.Reset();
+    }
+
+    private void PickupZadr()
+    {
+        var zadr = interacting.zadr;
+        if(zadr != null && zadr.canPickup)
+        {
+            zadr.isPickuped = true;
+            holdZadr = true;
+            //zadr.transform.SetParent(transform);
+            zadr.wakeUp += DropZadr;
+        }
+    }
+
+    private void DropZadr()
+    {
+        var zadr = interacting.zadr;
+        if(zadr != null)
+        {
+            zadr.isPickuped = false;
+            holdZadr = false;
+            //zadr.transform.SetParent(null);
+            zadr.wakeUp -= DropZadr;
+        }
+    }
+
+    private void UpdateZadrPosition()
+    {
+        interacting.zadr.transform.position = transform.position;
     }
 }

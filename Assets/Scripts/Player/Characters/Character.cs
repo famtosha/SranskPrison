@@ -8,6 +8,7 @@ public class Character : MonoBehaviour, IDamagable
     protected Move move;
     protected Interacting interacting;
     private bool isActive = false;
+    public bool isAvailable = true;
     public virtual int playerID { get; }
 
     public void Awake()
@@ -23,9 +24,10 @@ public class Character : MonoBehaviour, IDamagable
 
     public void PickupItem(PickupableItem item)
     {
-        if (!CharacterSelector.instance.playersInventory.hasItem(playerID))
+        var inventory = CharacterSelector.instance.playersInventory;
+        if (!inventory.hasItem(playerID))
         {
-            if(CharacterSelector.instance.playersInventory.AddItemToInventory(playerID, item.item))
+            if(inventory.AddItemToInventory(playerID, item.item))
             {
                 item.DestroyItem();
             }
@@ -59,7 +61,7 @@ public class Character : MonoBehaviour, IDamagable
 
     public virtual void Deselect() => ChangState(false);
 
-    private void ChangState(bool state)
+    protected void ChangState(bool state)
     {
         selectIcon.SetActive(state);
         move.enabled = state;

@@ -1,15 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZadrCharacter : Character
+public class ZadrCharacter : Character, IPickupable
 {
     public override int playerID => 2;
-    protected override bool isHacker => true;
     public float sleepDuration = 8;
     public float sleepCoolDownDuration = 16;
+    public GameObject sleepSign;
+    public MeleeAttack meleeAttack;
+
+    protected override bool isHacker => true;
+
     private Rigidbody2D rb;
     private CoolDown sleepCD;
+    private CoolDown biteCD = new CoolDown(5);
 
     private bool _isSleeping = false;
     public bool isSleeping
@@ -21,15 +27,32 @@ public class ZadrCharacter : Character
             if (_isSleeping)
             {
                 move.moveSpeed = 0;
-                rb.mass = 99999999;
+                sleepSign.SetActive(true);
             }
             else
             {
                 move.moveSpeed = 5;
-                rb.mass = 1;
+                sleepSign.SetActive(false);
+                wakeUp?.Invoke();
             }
         }
     }
+
+    private bool _isPickuped;
+
+    public event Action wakeUp;
+
+    public bool isPickuped
+    {
+        get => _isPickuped;
+        set
+        {
+            _isPickuped = value;
+            isAvailable = !_isPickuped;
+        }
+    }
+
+    public bool canPickup => isSleeping;
 
     private void Start()
     {
@@ -39,7 +62,7 @@ public class ZadrCharacter : Character
 
     public void StartSleep()
     {
-        StartCoroutine(Sleep());
+        if(sleepCD.isReady) StartCoroutine(Sleep());
     }
 
     private IEnumerator Sleep()
@@ -54,16 +77,27 @@ public class ZadrCharacter : Character
     {
         base.ActiveUpdate();
         if (Input.GetKeyDown(KeyCode.K)) StartSleep();
+        if (Input.GetKeyDown(KeyCode.L)) Bite();
     }
 
     protected override void Update()
     {
         base.Update();
         sleepCD.UpdateTimer(Time.deltaTime);
+        biteCD.UpdateTimer(Time.deltaTime);
     }
 
     public override void DealDamage(float damage)
     {
         if (!isSleeping) base.DealDamage(damage);
+    }
+
+    private void Bite()
+    {
+        if (biteCD.isReady)
+        {
+            meleeAttack.Attack();
+        }
+        biteCD.Reset();
     }
 }

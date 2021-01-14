@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    private Rigidbody2D rb;
     public float moveSpeed;
     public LayerMask floor;
+    public bool canMove = true;
+
+    private Rigidbody2D rb;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,7 +20,7 @@ public class Move : MonoBehaviour
         Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
         UpdateLookDirection(moveDirection.x);
         var positionOffset = (moveDirection * moveSpeed) + (Physics2D.gravity * rb.gravityScale);
-        rb.MovePosition(rb.position + positionOffset * Time.deltaTime);
+        if(canMove) rb.MovePosition(rb.position + positionOffset * Time.deltaTime);
     }
 
     public void UpdateLookDirection(float xAxis)

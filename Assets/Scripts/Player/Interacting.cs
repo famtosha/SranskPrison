@@ -31,6 +31,16 @@ public class Interacting : MonoBehaviour
         }
     }
 
+    private IPickupable _zadr = null;
+    public IPickupable zadr
+    {
+        get => _zadr;
+        set
+        {
+            _zadr = value;
+        }
+    }
+
     private void Awake()
     {
         character = GetComponent<Character>();
@@ -48,19 +58,13 @@ public class Interacting : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out IInteraction interaction)) itemNowTouch = interaction;
         if (collision.gameObject.TryGetComponent(out Character anotherCharacter)) characterNowTouch = anotherCharacter;
+        if (collision.gameObject.TryGetComponent(out IPickupable zadr)) this.zadr = zadr;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (itemNowTouch != null && collision.gameObject.GetComponent<IInteraction>() == itemNowTouch) itemNowTouch = null;
         if (characterNowTouch != null && collision.gameObject.GetComponent<Character>() == characterNowTouch) characterNowTouch = null;
-    }
-
-    public class Shitting<T>
-    {
-        public T nowToch;
-        public Action exitAction;
-        public Action enterAction;
-        public KeyCode useKey;
+        if (zadr != null && collision.gameObject.GetComponent<IPickupable>() == zadr) zadr = null;
     }
 }
