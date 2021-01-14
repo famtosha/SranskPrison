@@ -17,7 +17,7 @@ public class GopaCharacter : Character
     protected override void ActiveUpdate()
     {
         base.ActiveUpdate();
-        if (Input.GetKey(KeyCode.J) && weaponCD.isReady && !holdZadr) Shoot();
+        if (Input.GetKey(KeyCode.J) && weaponCD.isReady) Shoot();
         if (Input.GetKeyDown(KeyCode.Space) && meleeCD.isReady && !holdZadr) MeleeAttack();
         if (Input.GetKeyDown(KeyCode.K) && !holdZadr) PickupZadr();
     }
