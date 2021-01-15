@@ -96,7 +96,10 @@ public class ZadrCharacter : Character, IPickupable
     {
         if (biteCD.isReady)
         {
-            meleeAttack.Attack();
+            if (meleeAttack.Attack())
+            {
+                health.Heal(1);
+            }
         }
         biteCD.Reset();
     }

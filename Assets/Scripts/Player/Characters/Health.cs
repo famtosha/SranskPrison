@@ -27,6 +27,11 @@ public class Health
         health -= hearts;
     }
 
+    public void Heal(int hearts)
+    {
+        health += health;
+    }
+
     public Health(Character character, int health)
     {
         this.character = character;

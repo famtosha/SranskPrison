@@ -12,14 +12,20 @@ public class MeleeAttack : MonoBehaviour
         attackHitBox = GetComponent<Collider2D>();
     }
 
-    public void Attack()
+    public bool  Attack()
     {
+        bool result = false;
         Collider2D[] colliders = new Collider2D[5];
         var collidersCount = attackHitBox.OverlapCollider(new ContactFilter2D() {useTriggers = true, layerMask = enemyLayer }, colliders);
-        if (collidersCount < 1) return;
-        foreach (var collider in colliders)
+        if (collidersCount > 0)
         {
-            collider.GetComponent<Enemy>()?.DealDamage(damage);
+            result = true;
+            foreach (var collider in colliders)
+            {
+                collider.GetComponent<Enemy>()?.DealDamage(damage);
+            }
         }
+
+        return result;
     }
 }
