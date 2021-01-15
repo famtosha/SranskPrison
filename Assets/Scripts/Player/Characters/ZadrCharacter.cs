@@ -87,9 +87,9 @@ public class ZadrCharacter : Character, IPickupable
         biteCD.UpdateTimer(Time.deltaTime);
     }
 
-    public override void DealDamage(float damage)
+    public override void DealDamage(int hearts)
     {
-        if (!isSleeping) base.DealDamage(damage);
+        if (!isSleeping) base.DealDamage(hearts);
     }
 
     private void Bite()

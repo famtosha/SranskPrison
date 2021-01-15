@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public bool CanSeePlayer => Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer);
 
-    public void DealDamage(float damage)
+    public void DealDamage(int damage)
     {
         Destroy(gameObject);
     }

@@ -3,7 +3,7 @@
 public class MeleeAttack : MonoBehaviour
 {
     public LayerMask enemyLayer;
-    public float damage;
+    public int damage;
 
     private Collider2D attackHitBox;
 

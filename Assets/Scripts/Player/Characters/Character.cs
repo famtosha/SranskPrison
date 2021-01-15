@@ -1,25 +1,25 @@
+using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable
 {
-    [SerializeField] private GameObject selectIcon = null;
-    protected virtual bool isHacker => false;
-    public UseAction useAction => new UseAction(isHacker, CharacterSelector.instance.playersInventory.inventory[playerID]);
-    protected Move move;
-    protected Interacting interacting;
-    private bool isActive = false;
     public bool isAvailable = true;
     public virtual int playerID { get; }
+    public UseAction useAction => new UseAction(isHacker, CharacterSelector.instance.playersInventory.inventory[playerID]);
+    public Health health;
+
+    protected virtual bool isHacker => false;
+    protected Move move;
+    protected Interacting interacting;
+
+    [SerializeField] private GameObject selectIcon = null;
+    private bool isActive = false;
 
     public void Awake()
     {
         move = GetComponent<Move>();
         interacting = GetComponent<Interacting>();
-    }
-
-    public virtual void DealDamage(float damage)
-    {
-        Debug.LogError("player ded x_x");
+        health = new Health(this, 4);
     }
 
     public void PickupItem(PickupableItem item)
@@ -67,5 +67,10 @@ public class Character : MonoBehaviour, IDamagable
         move.enabled = state;
         interacting.enabled = state;
         isActive = state;
+    }
+
+    public virtual void DealDamage(int hearts)
+    {
+        health.DealDamage(hearts);
     }
 }

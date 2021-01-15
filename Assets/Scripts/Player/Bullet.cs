@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out IDamagable enemy))
         {
-            enemy.DealDamage(30);
+            enemy.DealDamage(1);
         }
         Destroy(gameObject);
     }
