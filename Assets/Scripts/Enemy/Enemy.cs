@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public LayerMask playerLayer;
     public Gun gun;
     public GameObject bulletPrefub;
+    public CoolDown shootCD = new CoolDown(2);
     public float lookDistance = 1;
 
     public bool CanSeePlayer => Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer);
@@ -18,12 +19,14 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void Update()
     {
-        if (CanSeePlayer) Shoot();
+        shootCD.UpdateTimer(Time.deltaTime);
+        if (CanSeePlayer && shootCD.isReady) Shoot();
     }
 
     public void Shoot()
     {
         gun.Shoot(bulletPrefub);
+        shootCD.Reset();
     }
 
     private void OnDrawGizmos()
