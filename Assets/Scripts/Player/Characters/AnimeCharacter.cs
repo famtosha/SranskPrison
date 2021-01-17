@@ -6,6 +6,7 @@ public class AnimeCharacter : Character
 {
     public override int playerID => 0;
     public LayerMask level;
+    public LayerMask zadr;
 
     private bool isHoldDuck = false;
 
@@ -33,7 +34,9 @@ public class AnimeCharacter : Character
     protected override void ActiveUpdate()
     {
         base.ActiveUpdate();
+
         if (Input.GetKeyDown(KeyCode.J)) move.Jump();
+        if (Input.GetKeyDown(KeyCode.L)) Kick();
 
         isHoldDuck = Input.GetKey(KeyCode.K);
         SitDown();
@@ -43,6 +46,26 @@ public class AnimeCharacter : Character
     private void SitDown()
     {
         if (!isDuck && isHoldDuck) isDuck = true;
+    }
+
+    private void Kick()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.right, 1, zadr);
+        if (hits.Length > 0)
+        {
+            foreach (var hit in hits)
+            {
+                if (hit.collider.gameObject.TryGetComponent(out ZadrCharacter zadr))
+                {
+                    var zadrRB = zadr.gameObject.GetComponent<Rigidbody2D>();
+                    var kickForce = zadr.transform.position - transform.position;
+                    kickForce = kickForce.normalized;
+                    kickForce *= 1000;
+                    zadrRB.AddForce(kickForce);
+                    return;
+                }
+            }
+        }
     }
 
     private void StandUp()

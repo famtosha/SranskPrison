@@ -778,6 +778,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAvailable: 1
   selectIcon: {fileID: 1459646341}
+  level:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  zadr:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &170171329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +799,7 @@ MonoBehaviour:
   moveSpeed: 15
   floor:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2147483648
   canMove: 1
 --- !u!61 &170171330
 BoxCollider2D:
@@ -865,7 +871,7 @@ GameObject:
   - component: {fileID: 260372803}
   - component: {fileID: 260372805}
   - component: {fileID: 260372804}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1520,7 +1526,7 @@ GameObject:
   - component: {fileID: 549970274}
   - component: {fileID: 549970276}
   - component: {fileID: 549970275}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,6 +1795,10 @@ PrefabInstance:
     - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 7615175115807883767, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2070,6 +2080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 7615175115807883767, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.391
@@ -2137,7 +2151,7 @@ GameObject:
   - component: {fileID: 615740868}
   - component: {fileID: 615740867}
   - component: {fileID: 615740866}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2360,7 +2374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 638030536}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2400,6 +2414,10 @@ PrefabInstance:
     - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_Name
       value: Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 7615175115807883767, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2462,7 +2480,7 @@ GameObject:
   - component: {fileID: 686270676}
   - component: {fileID: 686270678}
   - component: {fileID: 686270677}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2660,6 +2678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 7615175115807883767, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.43730104
@@ -2721,7 +2743,7 @@ GameObject:
   - component: {fileID: 774824830}
   - component: {fileID: 774824832}
   - component: {fileID: 774824831}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2830,7 +2852,7 @@ GameObject:
   - component: {fileID: 799150340}
   - component: {fileID: 799150342}
   - component: {fileID: 799150341}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3183,7 +3205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 845978658}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3605,6 +3627,10 @@ PrefabInstance:
     - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987009981722069739, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 7615175115807883767, guid: af1bb0ed4f4132f458cd822e3aea051c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5788,7 +5814,7 @@ GameObject:
   - component: {fileID: 1641701850}
   - component: {fileID: 1641701852}
   - component: {fileID: 1641701851}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5897,7 +5923,7 @@ GameObject:
   - component: {fileID: 1674778408}
   - component: {fileID: 1674778410}
   - component: {fileID: 1674778409}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Platform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7180,7 +7206,7 @@ GameObject:
   - component: {fileID: 2072027254}
   - component: {fileID: 2072027256}
   - component: {fileID: 2072027255}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7385,6 +7411,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.07
       objectReference: {fileID: 0}
+    - target: {fileID: 2789383217994679079, guid: 668dbaa1c059f9e4293a62cdc29909f9, type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 2789383218462323986, guid: 668dbaa1c059f9e4293a62cdc29909f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.95
@@ -7432,6 +7462,10 @@ PrefabInstance:
     - target: {fileID: 2789383218462323987, guid: 668dbaa1c059f9e4293a62cdc29909f9, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789383218462323987, guid: 668dbaa1c059f9e4293a62cdc29909f9, type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668dbaa1c059f9e4293a62cdc29909f9, type: 3}
