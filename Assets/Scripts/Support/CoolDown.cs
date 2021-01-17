@@ -1,7 +1,11 @@
-﻿public class CoolDown
+﻿using System;
+using UnityEngine;
+
+[Serializable]
+public class CoolDown
 {
     public float cd;
-    public float cdLeft;
+    private float cdLeft;
 
     public bool isReady => cdLeft < 0;
     public void UpdateTimer(float time) => cdLeft -= time;
