@@ -20,7 +20,6 @@ public class Character : MonoBehaviour, IDamagable
         move = GetComponent<Move>();
         interacting = GetComponent<Interacting>();
         health = new Health(this, 4);
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PickupItem(PickupableItem item)

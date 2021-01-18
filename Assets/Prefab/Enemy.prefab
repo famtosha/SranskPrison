@@ -148,8 +148,16 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  floor:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  rb: {fileID: 0}
+  moveSpeed: 0.05
+  floorCheckDistance: 2
   gun: {fileID: 4331912061796030702}
   bulletPrefub: {fileID: 6903593669887284613, guid: 6ade37ee7b49a264ebe2d3c17c757c19, type: 3}
+  shootCD:
+    cd: 2
   lookDistance: 4
 --- !u!1001 &7049831879067925002
 PrefabInstance:
