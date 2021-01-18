@@ -20,6 +20,7 @@ public class Character : MonoBehaviour, IDamagable
         move = GetComponent<Move>();
         interacting = GetComponent<Interacting>();
         health = new Health(this, 4);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PickupItem(PickupableItem item)
@@ -27,7 +28,7 @@ public class Character : MonoBehaviour, IDamagable
         var inventory = CharacterSelector.instance.playersInventory;
         if (!inventory.hasItem(playerID))
         {
-            if(inventory.AddItemToInventory(playerID, item.item))
+            if (inventory.AddItemToInventory(playerID, item.item))
             {
                 item.DestroyItem();
             }
@@ -41,7 +42,7 @@ public class Character : MonoBehaviour, IDamagable
 
     public void Trade(int playerID)
     {
-        if(playerID != this.playerID)
+        if (playerID != this.playerID)
         {
             CharacterSelector.instance.playersInventory.SwitchItems(playerID, this.playerID);
         }
