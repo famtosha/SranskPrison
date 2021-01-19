@@ -9,7 +9,7 @@ public class ZadrCharacter : Character, IPickupable
     public float sleepDuration = 8;
     public float sleepCoolDownDuration = 16;
     public GameObject sleepSign;
-    public MeleeAttack meleeAttack;
+    public LayerMask enemyLayer;
 
     protected override bool isHacker => true;
 
@@ -26,12 +26,12 @@ public class ZadrCharacter : Character, IPickupable
             _isSleeping = value;
             if (_isSleeping)
             {
-                move.moveSpeed = 0;
+                move.moveSpeedMultiply = 0;
                 sleepSign.SetActive(true);
             }
             else
             {
-                move.moveSpeed = 5;
+                move.moveSpeedMultiply = 1;
                 sleepSign.SetActive(false);
                 wakeUp?.Invoke();
             }
@@ -62,7 +62,7 @@ public class ZadrCharacter : Character, IPickupable
 
     public void StartSleep()
     {
-        if(sleepCD.isReady) StartCoroutine(Sleep());
+        if (sleepCD.isReady) StartCoroutine(Sleep());
     }
 
     private IEnumerator Sleep()
@@ -96,9 +96,15 @@ public class ZadrCharacter : Character, IPickupable
     {
         if (biteCD.isReady)
         {
-            if (meleeAttack.Attack())
+            var hit = Physics2D.Raycast(transform.position, transform.right, 1, enemyLayer);
+            if (hit)
             {
-                health.Heal(1);
+                var enemy = hit.collider.gameObject.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.DealDamage(1);
+                    health.Heal(1);
+                }
             }
         }
         biteCD.Reset();

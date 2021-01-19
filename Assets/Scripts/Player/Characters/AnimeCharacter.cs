@@ -8,7 +8,6 @@ public class AnimeCharacter : Character
     public LayerMask level;
     public LayerMask zadr;
     public CoolDown kickCD = new CoolDown(3);
-
     public float kickForce;
 
     private bool isHoldDuck = false;
@@ -23,12 +22,14 @@ public class AnimeCharacter : Character
             _isDuck = value;
             if (_isDuck)
             {
-                move.moveSpeed = 5;
+                move.moveSpeedMultiply = 0.5f;
+                move.charHeight = 0.5f;
                 transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
             }
             else
             {
-                move.moveSpeed = 15;
+                move.moveSpeedMultiply = 1;
+                move.charHeight = 1;
                 transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
             }
         }

@@ -9,7 +9,7 @@ public class Character : MonoBehaviour, IDamagable
     public Health health;
 
     protected virtual bool isHacker => false;
-    protected Move move;
+    protected CharacterMovement move;
     protected Interacting interacting;
 
     [SerializeField] private GameObject selectIcon = null;
@@ -17,7 +17,7 @@ public class Character : MonoBehaviour, IDamagable
 
     public void Awake()
     {
-        move = GetComponent<Move>();
+        move = GetComponent<CharacterMovement>();
         interacting = GetComponent<Interacting>();
         health = new Health(this, 4);
     }
