@@ -3,19 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamagable
+public class Guard : MonoBehaviour, IDamagable
 {
     public LayerMask playerLayer;
     public LayerMask floor;
-    public Rigidbody2D rb;
+
     public float moveSpeed;
     public float floorCheckDistance;
-    public Gun gun;
-    public GameObject bulletPrefub;
-    public CoolDown shootCD = new CoolDown(2);
     public float lookDistance = 1;
+    private int _health;
+    public int health
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+            if(_health <= 0) Destroy(gameObject);
+        }
+    }
 
     public bool CanSeePlayer => Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer);
+    private bool CanSeeWall => Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floor);
+    public bool isWayClear => CanSeeGround(out _) && !CanSeeWall;
+
+    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -24,21 +35,13 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void DealDamage(int damage)
     {
-        Destroy(gameObject);
+        health -= damage;
     }
 
-    public void Update()
+    protected virtual void Update()
     {
-        shootCD.UpdateTimer(Time.deltaTime);
-        if (CanSeePlayer && shootCD.isReady) Shoot();
         if (!isWayClear) TurnAround();
         Move();
-    }
-
-    public void Shoot()
-    {
-        gun.Shoot(bulletPrefub);
-        shootCD.Reset();
     }
 
     private bool CanSeeGround(out Vector2 postion)
@@ -48,10 +51,6 @@ public class Enemy : MonoBehaviour, IDamagable
         postion = result.point;
         return result;
     }
-
-    private bool CanSeeWall => Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floor);
-
-    public bool isWayClear => CanSeeGround(out _) && !CanSeeWall;
 
     private void TurnAround()
     {

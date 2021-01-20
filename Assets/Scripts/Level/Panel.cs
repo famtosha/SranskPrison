@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Panel : MonoBehaviour, IInteraction
 {
-    private bool isActive = false;
+    public bool multiUse = false;
     public GameObject Info;
     public List<GameObject> doors = new List<GameObject>();
-
     public virtual OpenRequire openType => OpenRequire.Nothing;
+
+    private bool isActive = false;
 
     public void HideInfo() => Info.SetActive(false);
     public void ShowInfo() => Info.SetActive(true);
@@ -39,7 +40,7 @@ public class Panel : MonoBehaviour, IInteraction
             {
                 door.GetComponent<IInteraction>().UseByAnotherObject();
             }
-            isActive = !isActive;
+            if(!multiUse) isActive = !isActive;
         }
     }
 

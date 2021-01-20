@@ -22,7 +22,7 @@ public class MeleeAttack : MonoBehaviour
             result = true;
             foreach (var collider in colliders)
             {
-                collider.GetComponent<Enemy>()?.DealDamage(damage);
+                collider.GetComponent<Guard>()?.DealDamage(damage);
             }
         }
 

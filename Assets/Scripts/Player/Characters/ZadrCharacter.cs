@@ -99,7 +99,7 @@ public class ZadrCharacter : Character, IPickupable
             var hit = Physics2D.Raycast(transform.position, transform.right, 1, enemyLayer);
             if (hit)
             {
-                var enemy = hit.collider.gameObject.GetComponent<Enemy>();
+                var enemy = hit.collider.gameObject.GetComponent<Guard>();
                 if (enemy != null)
                 {
                     enemy.DealDamage(1);
