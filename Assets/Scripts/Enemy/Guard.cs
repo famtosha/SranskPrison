@@ -7,10 +7,13 @@ public class Guard : MonoBehaviour, IDamagable
 {
     public LayerMask playerLayer;
     public LayerMask floor;
-
     public float moveSpeed;
     public float floorCheckDistance;
     public float lookDistance = 1;
+
+    protected bool canMove = true;
+
+    [SerializeField]
     private int _health;
     public int health
     {
@@ -59,7 +62,7 @@ public class Guard : MonoBehaviour, IDamagable
 
     public void Move()
     {
-        rb.MovePosition(transform.position + (transform.right * moveSpeed));
+        if(canMove) rb.MovePosition(transform.position + (transform.right * moveSpeed));
     }
 
     private void OnDrawGizmos()
