@@ -9,7 +9,7 @@ public class SlimGuard : Guard
     {
         base.Update();
         batCD.UpdateTimer(Time.deltaTime);
-        if (CanSeePlayer && batCD.isReady) AttackWithBat();
+        if (CanSeePlayer() && batCD.isReady) AttackWithBat();
     }
 
     private void AttackWithBat()

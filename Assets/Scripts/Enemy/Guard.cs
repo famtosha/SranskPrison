@@ -11,6 +11,8 @@ public class Guard : MonoBehaviour, IDamagable
     public float floorCheckDistance;
     public float lookDistance = 1;
 
+    public GameObject itemDrop;
+
     protected bool canMove = true;
 
     [SerializeField]
@@ -21,13 +23,31 @@ public class Guard : MonoBehaviour, IDamagable
         set
         {
             _health = value;
-            if(_health <= 0) Destroy(gameObject);
+
+            if (_health <= 0)
+            {
+                if(itemDrop != null)
+                {
+                    itemDrop.SetActive(true);
+                    itemDrop.transform.position = gameObject.transform.position;
+                }
+                Destroy(gameObject);
+            }
         }
     }
 
-    public bool CanSeePlayer => Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer);
-    private bool CanSeeWall => Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floor);
-    public bool isWayClear => CanSeeGround(out _) && !CanSeeWall;
+    public bool CanSeePlayer()
+    {
+        bool result = false;
+        var hit = Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer | floor);
+        if (hit)
+        {
+            result = hit.collider.gameObject.TryGetComponent(out Character character);
+        }
+        return result;
+    }
+    private bool canSeeWall => Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floor);
+    public bool isWayClear => CanSeeGround(out _) && !canSeeWall;
 
     private Rigidbody2D rb;
 
@@ -62,7 +82,7 @@ public class Guard : MonoBehaviour, IDamagable
 
     public void Move()
     {
-        if(canMove) rb.MovePosition(transform.position + (transform.right * moveSpeed));
+        if (canMove) rb.MovePosition(transform.position + (transform.right * moveSpeed));
     }
 
     private void OnDrawGizmos()

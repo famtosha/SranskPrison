@@ -53,7 +53,6 @@ public class GopaCharacter : Character
         {
             zadr.isPickuped = true;
             holdZadr = true;
-            //zadr.transform.SetParent(transform);
             zadr.wakeUp += DropZadr;
         }
     }
@@ -65,7 +64,6 @@ public class GopaCharacter : Character
         {
             zadr.isPickuped = false;
             holdZadr = false;
-            //zadr.transform.SetParent(null);
             zadr.wakeUp -= DropZadr;
         }
     }

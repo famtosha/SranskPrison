@@ -37,7 +37,7 @@ public class FatGuard : Guard
         base.Update();
         shootCD.UpdateTimer(Time.deltaTime);
         eatCD.UpdateTimer(Time.deltaTime);
-        if (CanSeePlayer && shootCD.isReady) Shoot();
-        if (health < 4 && eatCD.isReady && !CanSeePlayer) StartEat();
+        if (CanSeePlayer() && shootCD.isReady) Shoot();
+        if (health < 4 && eatCD.isReady && !CanSeePlayer()) StartEat();
     }
 }

@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public float speedLimit;
     public float jumpForce;
     public float moveSpeedMultiply = 1;
+    public float ladderGrapSpeed = 1;
 
     public float charHeight = 1;
 
@@ -16,13 +17,28 @@ public class CharacterMovement : MonoBehaviour
     public bool canMove = true;
 
     private Rigidbody2D rb;
+    private bool isOnLadder = false;
+    private float _defgravity;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _defgravity = rb.gravityScale;
     }
 
     private void FixedUpdate()
+    {
+        Move();
+        if (isOnLadder) MoveOnLadder();
+    }
+
+    private void MoveOnLadder() //rewrite in furute
+    {
+        float grapDirection = Input.GetAxis("Vertical");
+        rb.MovePosition(transform.up * grapDirection * ladderGrapSpeed);
+    }
+
+    private void Move()
     {
         Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);                           //get input
         UpdateLookDirection(moveDirection.x);                                                          //rotate char into move direction
@@ -64,6 +80,19 @@ public class CharacterMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, charHeight, 0));
+    }
+
+    public void ChangeLadderState(bool state)
+    {
+        isOnLadder = state;
+        if (state)
+        {
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = _defgravity;
+        }
     }
 
     public void Jump()

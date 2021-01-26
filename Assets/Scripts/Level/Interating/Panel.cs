@@ -26,7 +26,7 @@ public class Panel : MonoBehaviour, IInteraction
         {       
             if(door != null)
             {
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.cyan;
                 Gizmos.DrawLine(transform.position, door.transform.position);           
             }
         }

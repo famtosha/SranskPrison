@@ -63,7 +63,7 @@ public class AnimeCharacter : Character
                 if (hit.collider.gameObject.TryGetComponent(out ZadrCharacter zadr))
                 {
                     var zadrRB = zadr.gameObject.GetComponent<Rigidbody2D>();
-                    var kickDirection = zadr.transform.position - transform.position;
+                    var kickDirection = zadr.transform.up + zadr.transform.forward;
                     kickDirection = kickDirection.normalized;
                     zadrRB.AddForce(kickDirection *= kickForce);
                     kickCD.Reset();

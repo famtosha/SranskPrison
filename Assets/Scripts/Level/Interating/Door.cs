@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteraction
 {
-    public void HideInfo(){}
-    public void ShowInfo(){}
+    public void HideInfo() { }
+    public void ShowInfo() { }
+
+    private bool isOpened = false;
+
     private Animator doorOpenAnimation;
 
     public OpenRequire openType => OpenRequire.Closed;
@@ -17,7 +20,15 @@ public class Door : MonoBehaviour, IInteraction
 
     protected virtual void Use()
     {
-        doorOpenAnimation.Play("DoorOpen");
+        isOpened = !isOpened;
+        if (isOpened)
+        {
+            doorOpenAnimation.Play("DoorOpen");
+        }
+        else
+        {
+            doorOpenAnimation.Play("DoorClose");
+        }     
     }
 
     public void UseByAnotherObject()
