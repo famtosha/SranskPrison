@@ -13,6 +13,8 @@ public class NewItemInspector : Editor
         PickupableItem myTarget = (PickupableItem)target;
         if(myTarget.item != null)
         {
+            EditorUtility.SetDirty(myTarget);
+
             EditorGUILayout.ObjectField(myTarget.item, typeof(Item), allowSceneObjects: true);
 
             EditorGUILayout.BeginHorizontal();

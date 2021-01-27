@@ -32,12 +32,6 @@ public class CharacterMovement : MonoBehaviour
         if (isOnLadder) MoveOnLadder();
     }
 
-    private void MoveOnLadder() //rewrite in furute
-    {
-        float grapDirection = Input.GetAxis("Vertical");
-        rb.MovePosition(transform.up * grapDirection * ladderGrapSpeed);
-    }
-
     private void Move()
     {
         Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);                           //get input
@@ -76,10 +70,18 @@ public class CharacterMovement : MonoBehaviour
         return result;
     }
 
-    private void OnDrawGizmos()
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, charHeight, 0));
+    //}
+
+    private void MoveOnLadder() //rewrite in furute
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, charHeight, 0));
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector2 grabDirection = transform.up * verticalInput * ladderGrapSpeed;
+
+        rb.MovePosition((Vector2)transform.position + grabDirection);
     }
 
     public void ChangeLadderState(bool state)

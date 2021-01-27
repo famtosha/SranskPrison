@@ -24,9 +24,11 @@ public class FatGuard : Guard
         {
             canMove = false;
             sleepSign.SetActive(true);
+
+            eatCD.Reset();
             yield return new WaitForSeconds(eatTime);
             health += 1;
-            eatCD.Reset();
+
             canMove = true;
             sleepSign.SetActive(false);
         }

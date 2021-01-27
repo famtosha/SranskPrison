@@ -23,17 +23,25 @@ public class Guard : MonoBehaviour, IDamagable
         set
         {
             _health = value;
-
             if (_health <= 0)
             {
-                if(itemDrop != null)
-                {
-                    itemDrop.SetActive(true);
-                    itemDrop.transform.position = gameObject.transform.position;
-                }
-                Destroy(gameObject);
+                DropItem();
+                Death();
             }
         }
+    }
+
+    public void DropItem()
+    {
+        if (itemDrop == null) return;
+        itemDrop.SetActive(true);
+        itemDrop.transform.position = gameObject.transform.position;
+        itemDrop.transform.SetParent(null);
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 
     public bool CanSeePlayer()

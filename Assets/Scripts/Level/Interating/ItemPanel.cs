@@ -9,7 +9,7 @@ public class ItemPanel : Panel
 
     public override void UseByCharacter(UseAction use, out bool isUsed)
     {
-        if(use?.item.itemID == requireItemID)
+        if(use?.item?.itemID == requireItemID)
         {
             base.UseByCharacter(use, out isUsed);
         }

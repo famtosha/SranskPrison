@@ -22,7 +22,6 @@ public class Trap : MonoBehaviour
 
     private void ChangeState(bool state)
     {
-        GetComponent<Trap>().enabled = false;
         if (state)
         {
             sr.color = Color.red;
@@ -34,8 +33,7 @@ public class Trap : MonoBehaviour
     }
 
     private void OnCollisionStay2D(Collision2D collision)
-    { 
-        if (!isActive) return;
-        collision.gameObject.GetComponent<IDamagable>().DealDamage(9999);
+    {
+        if (isActive) collision.gameObject.GetComponent<IDamagable>().DealDamage(9999);
     }
 }

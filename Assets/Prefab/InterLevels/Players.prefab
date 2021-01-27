@@ -154,6 +154,7 @@ MonoBehaviour:
   speedLimit: 0.1
   jumpForce: 500
   moveSpeedMultiply: 1
+  ladderGrapSpeed: 0.3
   charHeight: 1
   floor:
     serializedVersion: 2
@@ -345,6 +346,7 @@ MonoBehaviour:
   speedLimit: 0.1
   jumpForce: 500
   moveSpeedMultiply: 1
+  ladderGrapSpeed: 0.3
   charHeight: 1
   floor:
     serializedVersion: 2
@@ -643,6 +645,7 @@ MonoBehaviour:
   speedLimit: 0.1
   jumpForce: 500
   moveSpeedMultiply: 1
+  ladderGrapSpeed: 0.3
   charHeight: 1
   floor:
     serializedVersion: 2

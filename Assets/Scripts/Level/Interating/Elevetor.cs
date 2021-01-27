@@ -10,6 +10,7 @@ public class Elevetor : MonoBehaviour, IInteraction
     private Vector3 _startPositionVector;
     private Vector3 _endPositionVector;
     private float _moveState = 0;
+    private float _distance;
 
     public void HideInfo() { }
     public void ShowInfo() { }
@@ -19,6 +20,7 @@ public class Elevetor : MonoBehaviour, IInteraction
     {
         _startPositionVector = gameObject.transform.position;
         _endPositionVector = endPostion.position;
+        _distance = Vector3.Distance(_startPositionVector, _endPositionVector);
     }
 
     public void UseByAnotherObject()
@@ -35,7 +37,7 @@ public class Elevetor : MonoBehaviour, IInteraction
             {                
                 var lerp = Vector3.Lerp(_startPositionVector, _endPositionVector, _moveState);
                 transform.position = lerp;
-                _moveState += Time.deltaTime * elevetorSpeed;
+                _moveState += Time.deltaTime * elevetorSpeed / _distance;
                 yield return new WaitForEndOfFrame();
             }
         }

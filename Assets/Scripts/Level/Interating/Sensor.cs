@@ -39,7 +39,7 @@ public class Sensor : MonoBehaviour
         bool isNowOpened;
         if (requireAllChars)
         {
-            isNowOpened = playerInTrigger > 3;
+            isNowOpened = playerInTrigger >= 3;
         }
         else
         {

@@ -8,6 +8,8 @@ public class CoolDown
     private float cdLeft;
 
     public bool isReady => cdLeft < 0;
+    public float left => cdLeft;
+
     public void UpdateTimer(float time) => cdLeft -= time;
     public void Reset() => cdLeft = cd;
     public void End() => cdLeft = 0;
