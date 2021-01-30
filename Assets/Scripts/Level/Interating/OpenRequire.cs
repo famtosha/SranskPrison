@@ -2,6 +2,6 @@
 {
     Nothing,
     Item,
-    Hack, //item + zadr
+    Hack, 
     Closed
 }

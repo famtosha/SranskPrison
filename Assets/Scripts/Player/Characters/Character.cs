@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable
@@ -6,7 +5,7 @@ public class Character : MonoBehaviour, IDamagable
     public bool isAvailable = true;
     public virtual int playerID { get; }
     public UseAction useAction => new UseAction(isHacker, CharacterSelector.instance.playersInventory.inventory[playerID]);
-    public Health health;
+    public Health health = new Health(0, 4, 4);
 
     protected virtual bool isHacker => false;
     protected CharacterMovement move;
@@ -19,7 +18,6 @@ public class Character : MonoBehaviour, IDamagable
     {
         move = GetComponent<CharacterMovement>();
         interacting = GetComponent<Interacting>();
-        health = new Health(this, 4);
     }
 
     public void PickupItem(PickupableItem item)
@@ -69,8 +67,13 @@ public class Character : MonoBehaviour, IDamagable
         isActive = state;
     }
 
+    public virtual void Heal(int amount)
+    {
+        health.health += amount;
+    }
+
     public virtual void DealDamage(int hearts)
     {
-        health.DealDamage(hearts);
+        health.health -= hearts;
     }
 }

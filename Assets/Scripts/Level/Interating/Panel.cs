@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,11 +22,11 @@ public class Panel : MonoBehaviour, IInteraction
     {
         if (doors?.Count < 1) return;
         foreach (var door in doors)
-        {       
-            if(door != null)
+        {
+            if (door != null)
             {
                 Gizmos.color = Color.cyan;
-                Gizmos.DrawLine(transform.position, door.transform.position);           
+                Gizmos.DrawLine(transform.position, door.transform.position);
             }
         }
     }
@@ -40,7 +39,7 @@ public class Panel : MonoBehaviour, IInteraction
             {
                 door.GetComponent<IInteraction>().UseByAnotherObject();
             }
-            if(!multiUse) isActive = !isActive;
+            if (!multiUse) isActive = !isActive;
         }
     }
 

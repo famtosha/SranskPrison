@@ -2,6 +2,8 @@
 
 public class Trap : MonoBehaviour
 {
+    public int trapDamage = 4;
+
     private SpriteRenderer sr;
 
     private bool _isActive = true;
@@ -34,6 +36,6 @@ public class Trap : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (isActive) collision.gameObject.GetComponent<IDamagable>().DealDamage(9999);
+        if (isActive) collision.gameObject.GetComponent<IDamagable>().DealDamage(trapDamage);
     }
 }

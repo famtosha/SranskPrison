@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour, IInteraction
 {
-    public void HideInfo() { }
-    public void ShowInfo() { }
+    public OpenRequire openType => OpenRequire.Closed;
 
     private bool isOpened = false;
-
     private Animator doorOpenAnimation;
 
-    public OpenRequire openType => OpenRequire.Closed;
+    public void HideInfo() { }
+    public void ShowInfo() { }
 
     private void Start()
     {
@@ -28,7 +25,7 @@ public class Door : MonoBehaviour, IInteraction
         else
         {
             doorOpenAnimation.Play("DoorClose");
-        }     
+        }
     }
 
     public void UseByAnotherObject()

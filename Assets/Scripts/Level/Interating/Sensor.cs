@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using System;
 
 public class Sensor : MonoBehaviour
 {
-    private int playerInTrigger = 0;
-    private bool isOpened = false;
-
     public bool requireAllChars = false;
     public GameObject[] doors;
+
+    private int playerInTrigger = 0;
+    private bool isOpened = false;
 
     private bool IsCharacter(Collider2D collider)
     {

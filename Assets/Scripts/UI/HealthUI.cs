@@ -1,12 +1,11 @@
-﻿using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
 
 public class HealthUI : MonoBehaviour
 {
     public TextMeshProUGUI text;
 
-    public void SetHealthText(int health)
+    public void OnHealthChanged(int health)
     {
         text.SetText(health.ToString());
     }

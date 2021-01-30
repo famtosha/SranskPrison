@@ -4,11 +4,29 @@ public class CharactersHealthUI : MonoBehaviour
 {
     public HealthUI[] healthUIs = new HealthUI[3];
 
-    private void OnEnable() => Health.HealthCanged += OnHealthChanged;
-    private void OnDisable() => Health.HealthCanged -= OnHealthChanged;
-
-    private void OnHealthChanged(int playerID, int newHealth)
+    private void OnEnable()
     {
-        healthUIs[playerID].SetHealthText(newHealth);
+        ConnectUI();
+    }
+
+    private void OnDisable()
+    {
+        DisconnectUI();
+    }
+
+    private void ConnectUI()
+    {
+        foreach (var character in FindObjectsOfType<Character>())
+        {
+            character.health.HealthChanged += healthUIs[character.playerID].OnHealthChanged;
+        }
+    }
+
+    private void DisconnectUI()
+    {
+        foreach (var character in FindObjectsOfType<Character>())
+        {
+            character.health.HealthChanged -= healthUIs[character.playerID].OnHealthChanged;
+        }
     }
 }

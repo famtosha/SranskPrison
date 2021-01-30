@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
 [CustomEditor(typeof(PickupableItem))]
-
 public class NewItemInspector : Editor
 {
     public override void OnInspectorGUI()
     {
         PickupableItem myTarget = (PickupableItem)target;
-        if(myTarget.item != null)
+        if (myTarget.item != null)
         {
             EditorUtility.SetDirty(myTarget);
 
@@ -22,9 +18,9 @@ public class NewItemInspector : Editor
             myTarget.item.itemSprite = (Sprite)EditorGUILayout.ObjectField(myTarget.item.itemSprite, typeof(Sprite), allowSceneObjects: true);
             EditorGUILayout.EndHorizontal();
 
-            myTarget.item.itemID = EditorGUILayout.IntField("Item Number",myTarget.item.itemID);
+            myTarget.item.itemID = EditorGUILayout.IntField("Item Number", myTarget.item.itemID);
 
-            if(GUILayout.Button("Reomove item")) myTarget.item = null;
+            if (GUILayout.Button("Reomove item")) myTarget.item = null;
         }
         else
         {

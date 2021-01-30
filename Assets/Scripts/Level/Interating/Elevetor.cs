@@ -5,7 +5,7 @@ public class Elevetor : MonoBehaviour, IInteraction
 {
     public OpenRequire openType => OpenRequire.Closed;
     public Transform endPostion;
-    [Min(0)]public float elevetorSpeed;
+    [Min(0)] public float elevetorSpeed;
 
     private Vector3 _startPositionVector;
     private Vector3 _endPositionVector;
@@ -33,8 +33,8 @@ public class Elevetor : MonoBehaviour, IInteraction
         StartCoroutine(MoveCoroutine());
         IEnumerator MoveCoroutine()
         {
-            while(_moveState < 1)
-            {                
+            while (_moveState < 1)
+            {
                 var lerp = Vector3.Lerp(_startPositionVector, _endPositionVector, _moveState);
                 transform.position = lerp;
                 _moveState += Time.deltaTime * elevetorSpeed / _distance;

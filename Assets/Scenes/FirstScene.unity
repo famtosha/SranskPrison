@@ -1774,6 +1774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf5ed8be207c4146a337c33c0e97aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trapDamage: 4
 --- !u!1 &845978657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3264,6 +3265,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 551585904579387131, guid: 146974577798f5746866536de3eac8af, type: 3}
+      propertyPath: health._health
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 551585904653571691, guid: 146974577798f5746866536de3eac8af, type: 3}
+      propertyPath: health._health
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 551585905140148454, guid: 146974577798f5746866536de3eac8af, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.98
@@ -3315,6 +3324,10 @@ PrefabInstance:
     - target: {fileID: 551585905140148457, guid: 146974577798f5746866536de3eac8af, type: 3}
       propertyPath: m_Name
       value: Players
+      objectReference: {fileID: 0}
+    - target: {fileID: 551585905490743470, guid: 146974577798f5746866536de3eac8af, type: 3}
+      propertyPath: health._health
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146974577798f5746866536de3eac8af, type: 3}

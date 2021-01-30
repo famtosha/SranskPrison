@@ -1,40 +1,42 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[Serializable]
 public class Health
 {
-    public static event HealthChanged HealthCanged;
-    private Character character;
+    public event Action<int> HealthChanged;
+    public event Action Death;
 
+    public int min { get; private set; }
+
+    [SerializeField]
+    private int _max;
+    public int max
+    {
+        get => _max;
+        private set
+        {
+            _max = value;
+        }
+    }
+
+    [SerializeField]
     private int _health;
     public int health
     {
         get => _health;
         set
         {
-            _health = value;
-            if (_health < 1) PlayerDie();
-            HealthCanged?.Invoke(character.playerID, _health);
+            _health = Mathf.Clamp(value, min, max);
+            HealthChanged?.Invoke(_health);
+            if (_health == min) Death?.Invoke();
         }
     }
 
-    public void PlayerDie()
+    public Health(int min, int max, int value)
     {
-        Debug.LogError("player dead x_x");
-    }
-
-    public void DealDamage(int hearts)
-    {
-        health -= hearts;
-    }
-
-    public void Heal(int hearts)
-    {
-        health += health;
-    }
-
-    public Health(Character character, int health)
-    {
-        this.character = character;
-        this.health = health;
+        this.min = min;
+        this.max = max;
+        health = value;
     }
 }

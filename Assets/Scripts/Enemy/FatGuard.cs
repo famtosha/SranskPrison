@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FatGuard : Guard
 {
@@ -8,6 +7,7 @@ public class FatGuard : Guard
     public CoolDown shootCD = new CoolDown(2);
     public CoolDown eatCD = new CoolDown(10);
     public float eatTime = 5;
+    public int healAmount = 1;
     public GameObject bulletPrefub;
     public GameObject sleepSign;
 
@@ -27,7 +27,7 @@ public class FatGuard : Guard
 
             eatCD.Reset();
             yield return new WaitForSeconds(eatTime);
-            health += 1;
+            health.health += healAmount;
 
             canMove = true;
             sleepSign.SetActive(false);
@@ -40,6 +40,6 @@ public class FatGuard : Guard
         shootCD.UpdateTimer(Time.deltaTime);
         eatCD.UpdateTimer(Time.deltaTime);
         if (CanSeePlayer() && shootCD.isReady) Shoot();
-        if (health < 4 && eatCD.isReady && !CanSeePlayer()) StartEat();
+        if (health.health < health.max && eatCD.isReady && !CanSeePlayer()) StartEat();
     }
 }

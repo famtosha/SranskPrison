@@ -12,11 +12,11 @@ public class MeleeAttack : MonoBehaviour
         attackHitBox = GetComponent<Collider2D>();
     }
 
-    public bool  Attack()
+    public bool Attack()
     {
         bool result = false;
         Collider2D[] colliders = new Collider2D[5];
-        var collidersCount = attackHitBox.OverlapCollider(new ContactFilter2D() {useTriggers = true, layerMask = enemyLayer }, colliders);
+        var collidersCount = attackHitBox.OverlapCollider(new ContactFilter2D() { useTriggers = true, layerMask = enemyLayer }, colliders);
         if (collidersCount > 0)
         {
             result = true;
@@ -25,7 +25,6 @@ public class MeleeAttack : MonoBehaviour
                 collider.GetComponent<Guard>()?.DealDamage(damage);
             }
         }
-
         return result;
     }
 }

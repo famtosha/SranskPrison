@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GiveItemInfo : MonoBehaviour
@@ -9,7 +7,7 @@ public class GiveItemInfo : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) Destroy(gameObject);
+        if (instance != null && instance != this) Destroy(gameObject);
         instance = this;
     }
 

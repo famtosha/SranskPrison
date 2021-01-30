@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -10,9 +8,7 @@ public class CharacterMovement : MonoBehaviour
     public float jumpForce;
     public float moveSpeedMultiply = 1;
     public float ladderGrapSpeed = 1;
-
     public float charHeight = 1;
-
     public LayerMask floor;
     public bool canMove = true;
 
@@ -84,17 +80,16 @@ public class CharacterMovement : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + grabDirection);
     }
 
-    public void ChangeLadderState(bool state)
+    public void ExitLadder()
     {
-        isOnLadder = state;
-        if (state)
-        {
-            rb.gravityScale = 0;
-        }
-        else
-        {
-            rb.gravityScale = _defgravity;
-        }
+        rb.gravityScale = _defgravity;
+        isOnLadder = false;
+    }
+
+    public void EnterLadder()
+    {
+        rb.gravityScale = 0;
+        isOnLadder = true;
     }
 
     public void Jump()

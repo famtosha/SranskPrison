@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +12,7 @@ public class InventoryUI : MonoBehaviour
 
     public void OnSlotChanged(int playerID, Item item)
     {
-        if(item != null)
+        if (item != null)
         {
             SetInventoryImage(playerID, item.itemSprite);
         }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GopaCharacter : Character
@@ -49,7 +46,7 @@ public class GopaCharacter : Character
     private void PickupZadr()
     {
         var zadr = interacting.zadr;
-        if(zadr != null && zadr.canPickup)
+        if (zadr != null && zadr.canPickup)
         {
             zadr.isPickuped = true;
             holdZadr = true;
@@ -60,7 +57,7 @@ public class GopaCharacter : Character
     private void DropZadr()
     {
         var zadr = interacting.zadr;
-        if(zadr != null)
+        if (zadr != null)
         {
             zadr.isPickuped = false;
             holdZadr = false;

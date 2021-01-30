@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterSelector : MonoBehaviour
@@ -19,8 +17,8 @@ public class CharacterSelector : MonoBehaviour
         {
             currentCharacter.Deselect();
             _selectedCharacter = value;
-            if (_selectedCharacter > 2) _selectedCharacter = 0;
-            if (_selectedCharacter < 0) _selectedCharacter = 2;
+            if (_selectedCharacter > characters.Length - 1) _selectedCharacter = 0;
+            if (_selectedCharacter < 0) _selectedCharacter = characters.Length - 1;
             currentCharacter.Select();
         }
     }

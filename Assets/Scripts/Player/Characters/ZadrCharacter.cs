@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZadrCharacter : Character, IPickupable
 {
     public override int playerID => 2;
+
     public float sleepDuration = 8;
     public float sleepCoolDownDuration = 16;
+    public float biteRange = 1;
+    public int biteHeal = 1;
+    public int biteDamage = 1;
     public GameObject sleepSign;
     public LayerMask enemyLayer;
-
-    protected override bool isHacker => true;
 
     private Rigidbody2D rb;
     private CoolDown sleepCD;
@@ -53,6 +54,7 @@ public class ZadrCharacter : Character, IPickupable
     }
 
     public bool canPickup => isSleeping;
+    protected override bool isHacker => true;
 
     private void Start()
     {
@@ -96,14 +98,14 @@ public class ZadrCharacter : Character, IPickupable
     {
         if (biteCD.isReady)
         {
-            var hit = Physics2D.Raycast(transform.position, transform.right, 1, enemyLayer);
+            var hit = Physics2D.Raycast(transform.position, transform.right, biteRange, enemyLayer);
             if (hit)
             {
                 var enemy = hit.collider.gameObject.GetComponent<Guard>();
                 if (enemy != null)
                 {
-                    enemy.DealDamage(1);
-                    health.Heal(1);
+                    enemy.DealDamage(biteDamage);
+                    Heal(biteHeal);
                 }
             }
         }

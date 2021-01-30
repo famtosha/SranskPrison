@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Guard : MonoBehaviour, IDamagable
@@ -10,50 +7,11 @@ public class Guard : MonoBehaviour, IDamagable
     public float moveSpeed;
     public float floorCheckDistance;
     public float lookDistance = 1;
-
     public GameObject itemDrop;
+    [SerializeField] public Health health = new Health(0, 4, 4);
 
     protected bool canMove = true;
 
-    [SerializeField]
-    private int _health;
-    public int health
-    {
-        get => _health;
-        set
-        {
-            _health = value;
-            if (_health <= 0)
-            {
-                DropItem();
-                Death();
-            }
-        }
-    }
-
-    public void DropItem()
-    {
-        if (itemDrop == null) return;
-        itemDrop.SetActive(true);
-        itemDrop.transform.position = gameObject.transform.position;
-        itemDrop.transform.SetParent(null);
-    }
-
-    public void Death()
-    {
-        Destroy(gameObject);
-    }
-
-    public bool CanSeePlayer()
-    {
-        bool result = false;
-        var hit = Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer | floor);
-        if (hit)
-        {
-            result = hit.collider.gameObject.TryGetComponent(out Character character);
-        }
-        return result;
-    }
     private bool canSeeWall => Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floor);
     public bool isWayClear => CanSeeGround(out _) && !canSeeWall;
 
@@ -62,11 +20,7 @@ public class Guard : MonoBehaviour, IDamagable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void DealDamage(int damage)
-    {
-        health -= damage;
+        health.Death += Death;
     }
 
     protected virtual void Update()
@@ -91,6 +45,36 @@ public class Guard : MonoBehaviour, IDamagable
     public void Move()
     {
         if (canMove) rb.MovePosition(transform.position + (transform.right * moveSpeed));
+    }
+
+    public void DropItem()
+    {
+        if (itemDrop == null) return;
+        itemDrop.SetActive(true);
+        itemDrop.transform.position = gameObject.transform.position;
+        itemDrop.transform.SetParent(null);
+    }
+
+    public bool CanSeePlayer()
+    {
+        bool result = false;
+        var hit = Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer | floor);
+        if (hit)
+        {
+            result = hit.collider.gameObject.TryGetComponent(out Character _);
+        }
+        return result;
+    }
+
+    public void DealDamage(int damage)
+    {
+        health.health -= damage;
+    }
+
+    public void Death()
+    {
+        DropItem();
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
