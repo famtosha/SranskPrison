@@ -173,6 +173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAvailable: 1
+  health:
+    _max: 4
+    _health: 4
   selectIcon: {fileID: 6130424964265503853}
   bulletPrefub: {fileID: 6903593669887284613, guid: ed2666ea9c9f54a4c8b01e7bcc5ad612, type: 3}
   gun: {fileID: 551585905474150776}
@@ -365,13 +368,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAvailable: 1
+  health:
+    _max: 4
+    _health: 4
   selectIcon: {fileID: 6130424963667510364}
   sleepDuration: 8
   sleepCoolDownDuration: 8
+  biteRange: 1
+  biteHeal: 1
+  biteDamage: 1
   sleepSign: {fileID: 6130424963003487171}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2147483648
+  biteCD:
+    cd: 5
 --- !u!114 &551585904653571688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +503,7 @@ MonoBehaviour:
   - {fileID: 551585905490743470}
   - {fileID: 551585904579387131}
   - {fileID: 551585904653571691}
+  canChangeCharacter: 1
 --- !u!1 &551585905490743507
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAvailable: 1
+  health:
+    _max: 4
+    _health: 4
   selectIcon: {fileID: 551585905598785670}
   level:
     serializedVersion: 2
@@ -674,6 +689,9 @@ MonoBehaviour:
   kickCD:
     cd: 5
   kickForce: 1000
+  duckSize: 0.5
+  duckSpeed: 0.5
+  kickRange: 1
 --- !u!114 &551585905490743467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,7 +857,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a99e42b420a27bc4caa98557feb3f4f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6af0703d6a535b247a9863904af5e6c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -847,7 +865,7 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6130424963667510364

@@ -8,6 +8,7 @@ public class CharacterSelector : MonoBehaviour
     public Character[] characters = new Character[3];
     public Inventory playersInventory = new Inventory();
     public Character currentCharacter => characters[_selectedCharacter];
+    public bool canChangeCharacter = true;
 
     private int _selectedCharacter = 0;
     public int selectedCharacter
@@ -45,9 +46,24 @@ public class CharacterSelector : MonoBehaviour
         mainCamera.transform.position = new Vector3(currentCharPos.x, currentCharPos.y, mainCamera.transform.position.z);
     }
 
+    public void SetActiveCharacter(int charID)
+    {
+        selectedCharacter = charID;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl)) selectedCharacter++;
+        if (Input.GetKeyDown(KeyCode.LeftControl) && canChangeCharacter) selectedCharacter++;
         UpdateCameraPosition();
+    }
+
+    public void EnableCharacterSelection()
+    {
+        canChangeCharacter = true;
+    }
+
+    public void DisableCharacterSelection()
+    {
+        canChangeCharacter = false;
     }
 }

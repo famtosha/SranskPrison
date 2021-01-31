@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable
@@ -18,6 +19,7 @@ public class Character : MonoBehaviour, IDamagable
     {
         move = GetComponent<CharacterMovement>();
         interacting = GetComponent<Interacting>();
+        health.Death += OnDeath;
     }
 
     public void PickupItem(PickupableItem item)
@@ -75,5 +77,10 @@ public class Character : MonoBehaviour, IDamagable
     public virtual void DealDamage(int hearts)
     {
         health.health -= hearts;
+    }
+
+    public virtual void OnDeath()
+    {
+        Debug.LogError("player ded x_x");
     }
 }

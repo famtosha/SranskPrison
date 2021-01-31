@@ -16,7 +16,7 @@ public class ZadrCharacter : Character, IPickupable
 
     private Rigidbody2D rb;
     private CoolDown sleepCD;
-    private CoolDown biteCD = new CoolDown(5);
+    public CoolDown biteCD = new CoolDown(5);
 
     private bool _isSleeping = false;
     public bool isSleeping
