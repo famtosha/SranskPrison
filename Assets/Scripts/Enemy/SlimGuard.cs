@@ -10,21 +10,29 @@ public class SlimGuard : Guard
     {
         base.Update();
         batCD.UpdateTimer(Time.deltaTime);
-        if (CanSeePlayer() && batCD.isReady) AttackWithBat();
+    }
+
+    public override void Attack()
+    {
+        base.Attack();
+        AttackWithBat();
     }
 
     private void AttackWithBat()
     {
-        var hit = Physics2D.Raycast(transform.position, transform.right, batRange, playerLayer);
-        if (hit)
+        if (batCD.isReady)
         {
-            var character = hit.collider.gameObject;
-            character.GetComponent<Character>().DealDamage(batDamage);
-            if (character.TryGetComponent(out ZadrCharacter zadr))
+            var hit = Physics2D.Raycast(transform.position, transform.right, batRange, playerLayer);
+            if (hit)
             {
-                zadr.isSleeping = false;
+                var character = hit.collider.gameObject;
+                character.GetComponent<Character>().DealDamage(batDamage);
+                if (character.TryGetComponent(out ZadrCharacter zadr))
+                {
+                    zadr.isSleeping = false;
+                }
+                batCD.Reset();
             }
-            batCD.Reset();
         }
     }
 }

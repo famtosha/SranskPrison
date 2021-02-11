@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[SelectionBase]
 public class Character : MonoBehaviour, IDamagable
 {
     public bool isAvailable = true;
@@ -57,16 +58,25 @@ public class Character : MonoBehaviour, IDamagable
 
     }
 
-    public virtual void Select() => ChangState(true);
+    public virtual void Select() => EnableCharacter();
 
-    public virtual void Deselect() => ChangState(false);
+    public virtual void Deselect() => DisableCharacter();
 
-    protected void ChangState(bool state)
+
+    protected void DisableCharacter()
     {
-        selectIcon.SetActive(state);
-        move.enabled = state;
-        interacting.enabled = state;
-        isActive = state;
+        selectIcon.SetActive(false);
+        move.DisableMovement();
+        interacting.enabled = false;
+        isActive = false;
+    }
+
+    protected void EnableCharacter()
+    {
+        selectIcon.SetActive(true);
+        move.EnableMovement();
+        interacting.enabled = true;
+        isActive = true;
     }
 
     public virtual void Heal(int amount)

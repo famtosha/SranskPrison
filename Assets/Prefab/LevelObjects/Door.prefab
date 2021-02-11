@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2789383217994679078}
   - component: {fileID: 2789383217994679076}
   - component: {fileID: 2789383217994679077}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: DoorTexture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 2789383218462323986}
   - component: {fileID: 2789383218462323984}
   - component: {fileID: 2789383218462323985}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

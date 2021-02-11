@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Guard : MonoBehaviour, IDamagable
@@ -8,12 +9,16 @@ public class Guard : MonoBehaviour, IDamagable
     public float floorCheckDistance;
     public float lookDistance = 1;
     public GameObject itemDrop;
+    public GuardStateMachine stateMachine;
     [SerializeField] public Health health = new Health(0, 4, 4);
 
     protected bool canMove = true;
 
     private bool canSeeWall => Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floor);
-    public bool isWayClear => CanSeeGround(out _) && !canSeeWall;
+    public bool IsWayClear()
+    {
+        return CanSeeGround(out _) && !canSeeWall;
+    }
 
     private Rigidbody2D rb;
 
@@ -21,12 +26,12 @@ public class Guard : MonoBehaviour, IDamagable
     {
         rb = GetComponent<Rigidbody2D>();
         health.Death += Death;
+        stateMachine = new GuardStateMachine(this);
     }
 
     protected virtual void Update()
     {
-        if (!isWayClear) TurnAround();
-        Move();
+        stateMachine.StateUpdate();
     }
 
     private bool CanSeeGround(out Vector2 postion)
@@ -44,7 +49,13 @@ public class Guard : MonoBehaviour, IDamagable
 
     public void Move()
     {
+        if (!IsWayClear()) TurnAround();
         if (canMove) rb.MovePosition(transform.position + (transform.right * moveSpeed));
+    }
+
+    public virtual void Attack()
+    {
+
     }
 
     public void DropItem()
@@ -81,7 +92,7 @@ public class Guard : MonoBehaviour, IDamagable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + transform.right * lookDistance);
-        if (isWayClear) Gizmos.color = Color.green;
+        if (IsWayClear()) Gizmos.color = Color.green;
         else Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + (transform.right * floorCheckDistance));
         Gizmos.DrawLine(transform.position, transform.position + ((transform.right + -transform.up).normalized * floorCheckDistance));

@@ -12,6 +12,7 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask floor;
     public bool canMove = true;
 
+    private bool isActive = true;
     private Rigidbody2D rb;
     private bool isOnLadder = false;
     private float _defgravity;
@@ -24,8 +25,19 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (isActive) Move();
+        else Stop();
         if (isOnLadder) MoveOnLadder();
+    }
+
+    public void DisableMovement()
+    {
+        isActive = false;
+    }
+
+    public void EnableMovement()
+    {
+        isActive = true;
     }
 
     private void Move()
@@ -37,21 +49,22 @@ public class CharacterMovement : MonoBehaviour
         Vector2 moveVector = transform.right * moveDirection * moveSpeed;
         if (IsGounded()) moveVector *= moveSpeedMultiply;
         rb.AddForce(moveVector);
-
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -speedLimit, speedLimit), rb.velocity.y); // clamp X velocity
-
         if (moveDirection.x == 0f) Stop();                                                             // stop char if dont get input
     }
 
     private void Stop()
     {
-        var stopVelocity = new Vector2(rb.velocity.x, 0);
+        if (IsGounded())
+        {
+            var stopVelocity = new Vector2(rb.velocity.x, 0);
 
-        stopVelocity *= -1;
-        stopVelocity /= 2;
-        stopVelocity *= stopSpeed;
+            stopVelocity *= -1;
+            stopVelocity /= 2;
+            stopVelocity *= stopSpeed;
 
-        rb.AddForce(stopVelocity);
+            rb.AddForce(stopVelocity);
+        }
     }
 
     public void UpdateLookDirection(float xAxis)

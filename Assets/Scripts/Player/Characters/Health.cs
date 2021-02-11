@@ -39,4 +39,20 @@ public class Health
         this.max = max;
         health = value;
     }
+
+    public static Health operator ++(Health health)
+    {
+        health.health++;
+        return health;
+    }
+
+    public static bool operator >(Health firstOperand, int secondOperand)
+    {
+        return firstOperand.health > secondOperand;
+    }
+
+    public static bool operator <(Health firstOperand, int secondOperand)
+    {
+        return firstOperand.health < secondOperand;
+    }
 }

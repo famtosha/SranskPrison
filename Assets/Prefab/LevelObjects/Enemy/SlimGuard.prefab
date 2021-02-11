@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009722590580445890}
   - component: {fileID: 8927623312936333860}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5745994706689198665}
   - component: {fileID: 6985438224222583486}
   - component: {fileID: 5203709794561215675}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SlimGuard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,11 @@ MonoBehaviour:
   moveSpeed: 0.1
   floorCheckDistance: 2
   lookDistance: 20
-  _health: 3
+  itemDrop: {fileID: 0}
+  health:
+    _max: 4
+    _health: 4
   batCD:
     cd: 3
   batRange: 1
+  batDamage: 1

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4133605727576466600}
   - component: {fileID: 7710346446344884900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Eat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5745994706689198665}
   - component: {fileID: 6985438224222583486}
   - component: {fileID: 2319142238581933014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FatGuard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,13 +237,17 @@ MonoBehaviour:
   moveSpeed: 0.1
   floorCheckDistance: 2
   lookDistance: 20
-  _health: 4
+  itemDrop: {fileID: 0}
+  health:
+    _max: 4
+    _health: 4
   gun: {fileID: 4331912061796030702}
   shootCD:
     cd: 2
   eatCD:
     cd: 10
   eatTime: 5
+  healAmount: 1
   bulletPrefub: {fileID: 6903593669887284613, guid: 6ade37ee7b49a264ebe2d3c17c757c19, type: 3}
   sleepSign: {fileID: 2120056126526550874}
 --- !u!1001 &7049831879067925002
@@ -256,6 +260,10 @@ PrefabInstance:
     - target: {fileID: 6757655293565625062, guid: 0925ffd31ac40064f89e4014b19a8dac, type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757655293565625062, guid: 0925ffd31ac40064f89e4014b19a8dac, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6757655293565625063, guid: 0925ffd31ac40064f89e4014b19a8dac, type: 3}
       propertyPath: m_LocalPosition.x

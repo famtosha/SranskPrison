@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(Collider2D))]
 public class Sensor : MonoBehaviour
 {
     public bool requireAllChars = false;
     public GameObject[] doors;
 
     private int playerInTrigger = 0;
-    private bool isOpened = false;
+    protected bool isActivated = false;
 
     private bool IsCharacter(Collider2D collider)
     {
@@ -18,7 +20,7 @@ public class Sensor : MonoBehaviour
 
         if (IsCharacter(collision))
         {
-            playerInTrigger += 1;
+            playerInTrigger++;
             CharcatersNearChanged();
         }
     }
@@ -27,7 +29,7 @@ public class Sensor : MonoBehaviour
     {
         if (IsCharacter(collision))
         {
-            playerInTrigger -= 1;
+            playerInTrigger--;
             CharcatersNearChanged();
         }
     }
@@ -44,11 +46,19 @@ public class Sensor : MonoBehaviour
         {
             isNowOpened = playerInTrigger > 0;
         }
-        if (isNowOpened != isOpened) ChangeDoorState();
-        isOpened = isNowOpened;
+        if (isNowOpened != isActivated) ChangeDoorState();
+        isActivated = isNowOpened;
+        if (isActivated)
+        {
+            Down();
+        }
+        else
+        {
+            Up();
+        }
     }
 
-    private void ChangeDoorState()
+    protected virtual void ChangeDoorState()
     {
         if (doors?.Length > 0)
         {
@@ -61,14 +71,26 @@ public class Sensor : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (doors?.Length < 1) return;
-        foreach (var door in doors)
+        if (doors != null && doors.Length > 0)
         {
-            if (door != null)
+            foreach (var door in doors)
             {
-                Gizmos.color = Color.cyan;
-                Gizmos.DrawLine(transform.position, door.transform.position);
+                if (door != null)
+                {
+                    Gizmos.color = Color.cyan;
+                    Gizmos.DrawLine(transform.position, door.transform.position);
+                }
             }
         }
+    }
+
+    protected virtual void Down()
+    {
+
+    }
+
+    protected virtual void Up()
+    {
+
     }
 }

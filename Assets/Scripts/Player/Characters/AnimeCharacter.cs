@@ -11,6 +11,8 @@ public class AnimeCharacter : Character
     public float duckSpeed = 0.5f;
     public float kickRange = 1;
 
+    public float kickAngle = 0.5f;
+
     private bool isHoldDuck = false;
 
     private bool _isDuck = false;
@@ -64,9 +66,8 @@ public class AnimeCharacter : Character
                 if (hit.collider.gameObject.TryGetComponent(out ZadrCharacter zadr))
                 {
                     var zadrRB = zadr.gameObject.GetComponent<Rigidbody2D>();
-                    var kickDirection = zadr.transform.up + zadr.transform.forward;
-                    kickDirection = kickDirection.normalized;
-                    zadrRB.AddForce(kickDirection *= kickForce);
+                    var kickDirection = Vector3.Lerp(transform.right, transform.up, kickAngle);
+                    zadrRB.AddForce(kickDirection * kickForce);
                     kickCD.Reset();
                     return;
                 }
