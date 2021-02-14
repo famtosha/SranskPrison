@@ -46,11 +46,11 @@ public class GopaCharacter : Character
     private void PickupZadr()
     {
         var zadr = interacting.zadr;
-        if (zadr != null && zadr.canPickup)
+        if (zadr != null && zadr.nowTouch.canPickup)
         {
-            zadr.isPickuped = true;
+            zadr.nowTouch.isPickuped = true;
             holdZadr = true;
-            zadr.wakeUp += DropZadr;
+            zadr.nowTouch.wakeUp += DropZadr;
         }
     }
 
@@ -59,14 +59,14 @@ public class GopaCharacter : Character
         var zadr = interacting.zadr;
         if (zadr != null)
         {
-            zadr.isPickuped = false;
+            zadr.nowTouch.isPickuped = false;
             holdZadr = false;
-            zadr.wakeUp -= DropZadr;
+            zadr.nowTouch.wakeUp -= DropZadr;
         }
     }
 
     private void UpdateZadrPosition()
     {
-        interacting.zadr.transform.position = transform.position;
+        interacting.zadr.nowTouch.transform.position = transform.position;
     }
 }

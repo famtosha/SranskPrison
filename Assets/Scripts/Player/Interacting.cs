@@ -1,67 +1,39 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Character))]
 public class Interacting : MonoBehaviour
 {
     private Character character;
-
-    private IInteraction _itemNowTouch = null;
-    public IInteraction itemNowTouch
-    {
-        get => _itemNowTouch;
-        set
-        {
-            _itemNowTouch?.HideInfo();
-            _itemNowTouch = value;
-            _itemNowTouch?.ShowInfo();
-        }
-    }
-
-    private Character _characterNowTouch = null;
-    public Character characterNowTouch
-    {
-        get => _characterNowTouch;
-        set
-        {
-            GiveItemInfo.instance?.HideInfo();
-            _characterNowTouch = value;
-            if (_characterNowTouch != null) GiveItemInfo.instance?.ShowInfo();
-        }
-    }
-
-    private IPickupable _zadr = null;
-    public IPickupable zadr
-    {
-        get => _zadr;
-        set
-        {
-            _zadr = value;
-        }
-    }
+    public InterationData<IPickupable> zadr;
+    public InterationData<Character> anotherCharacter;
+    public InterationData<IInteraction> interactionNowTouch;
 
     private void Awake()
     {
         character = GetComponent<Character>();
+
+        zadr = new InterationData<IPickupable>(x => { return; }, x => { return; });
+        anotherCharacter = new InterationData<Character>(x => GiveItemInfo.instance.HideInfo(), y => {GiveItemInfo.instance.ShowInfo(); });
+        interactionNowTouch = new InterationData<IInteraction>(x => x.HideInfo(), y => y.ShowInfo());
     }
 
     private void Update()
     {
-        bool isUsed = false;
-        if (Input.GetKeyDown(KeyCode.E) && itemNowTouch != null) itemNowTouch.UseByCharacter(character.useAction, out isUsed);
-        if (isUsed) character.RemoveItem();
-        if (Input.GetKeyDown(KeyCode.T) && characterNowTouch != null) characterNowTouch.Trade(character.playerID);
+        if (Input.GetKeyDown(KeyCode.E) && interactionNowTouch.nowTouch != null && interactionNowTouch.nowTouch.UseByCharacter(character.useAction)) character.RemoveItem();
+        if (Input.GetKeyDown(KeyCode.T)) anotherCharacter.nowTouch?.Trade(character.playerID);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IInteraction interaction)) itemNowTouch = interaction;
-        if (collision.gameObject.TryGetComponent(out Character anotherCharacter)) characterNowTouch = anotherCharacter;
-        if (collision.gameObject.TryGetComponent(out IPickupable zadr)) this.zadr = zadr;
+        zadr.OnEnter(collision);
+        anotherCharacter.OnEnter(collision);
+        interactionNowTouch.OnEnter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (itemNowTouch != null && collision.gameObject.GetComponent<IInteraction>() == itemNowTouch) itemNowTouch = null;
-        if (characterNowTouch != null && collision.gameObject.GetComponent<Character>() == characterNowTouch) characterNowTouch = null;
-        if (zadr != null && collision.gameObject.GetComponent<IPickupable>() == zadr) zadr = null;
+        zadr.OnExit(collision);
+        anotherCharacter.OnExit(collision);
+        interactionNowTouch.OnExit(collision);
     }
 }

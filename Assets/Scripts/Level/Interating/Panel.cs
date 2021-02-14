@@ -43,14 +43,15 @@ public class Panel : MonoBehaviour, IInteraction
         }
     }
 
-    public virtual void UseByCharacter(UseAction use, out bool isUsed)
+    public virtual bool UseByCharacter(UseAction use)
     {
         Use();
-        isUsed = true;
+        return true;
     }
 
-    public virtual void UseByAnotherObject()
+    public virtual bool UseByAnotherObject()
     {
         Use();
+        return true;
     }
 }

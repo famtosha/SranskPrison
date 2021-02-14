@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed;
@@ -75,8 +76,7 @@ public class CharacterMovement : MonoBehaviour
 
     public bool IsGounded()
     {
-        bool result = Physics2D.Raycast(transform.position, -transform.up, charHeight, floor);
-        return result;
+        return Physics2D.Raycast(transform.position, -transform.up, charHeight, floor);
     }
 
     //private void OnDrawGizmos()

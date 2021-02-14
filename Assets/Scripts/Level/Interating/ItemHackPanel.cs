@@ -2,16 +2,14 @@
 {
     public override OpenRequire openType => OpenRequire.Hack;
 
-    public override void UseByCharacter(UseAction use, out bool isUsed)
+    public override bool UseByCharacter(UseAction use)
     {
+        bool result = false;
         if (use.isHacker && use.item?.itemID == requireItemID)
         {
             Use();
-            isUsed = true;
+            result = true;
         }
-        else
-        {
-            isUsed = false;
-        }
+        return result;
     }
 }

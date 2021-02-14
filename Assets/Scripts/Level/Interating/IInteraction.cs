@@ -1,7 +1,7 @@
 public interface IInteraction
 {
-    void UseByCharacter(UseAction use, out bool isUsed);
-    void UseByAnotherObject();
+    bool UseByCharacter(UseAction use);
+    bool UseByAnotherObject();
     OpenRequire openType { get; }
     void ShowInfo();
     void HideInfo();

@@ -10,14 +10,14 @@ public class Guard : MonoBehaviour, IDamagable
     public float lookDistance = 1;
     public GameObject itemDrop;
     public GuardStateMachine stateMachine;
-    [SerializeField] public Health health = new Health(0, 4, 4);
+    public Health health = new Health(0, 4, 4);
 
     protected bool canMove = true;
 
     private bool canSeeWall => Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floor);
     public bool IsWayClear()
     {
-        return CanSeeGround(out _) && !canSeeWall;
+        return CanSeeGround() && !canSeeWall;
     }
 
     private Rigidbody2D rb;
@@ -34,12 +34,9 @@ public class Guard : MonoBehaviour, IDamagable
         stateMachine.StateUpdate();
     }
 
-    private bool CanSeeGround(out Vector2 postion)
+    private bool CanSeeGround()
     {
-        Vector2 checkDirection = transform.right + -transform.up;
-        var result = Physics2D.Raycast(transform.position, checkDirection, floorCheckDistance, floor);
-        postion = result.point;
-        return result;
+        return Physics2D.Raycast(transform.position, transform.right + -transform.up, floorCheckDistance, floor);
     }
 
     private void TurnAround()
@@ -72,7 +69,7 @@ public class Guard : MonoBehaviour, IDamagable
         var hit = Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer | floor);
         if (hit)
         {
-            result = hit.collider.gameObject.TryGetComponent(out Character _);
+            result = hit.collider.gameObject.HasComponent<Character>();
         }
         return result;
     }
@@ -88,13 +85,13 @@ public class Guard : MonoBehaviour, IDamagable
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.right * lookDistance);
-        if (IsWayClear()) Gizmos.color = Color.green;
-        else Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + (transform.right * floorCheckDistance));
-        Gizmos.DrawLine(transform.position, transform.position + ((transform.right + -transform.up).normalized * floorCheckDistance));
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawLine(transform.position, transform.position + transform.right * lookDistance);
+    //    if (IsWayClear()) Gizmos.color = Color.green;
+    //    else Gizmos.color = Color.yellow;
+    //    Gizmos.DrawLine(transform.position, transform.position + (transform.right * floorCheckDistance));
+    //    Gizmos.DrawLine(transform.position, transform.position + ((transform.right + -transform.up).normalized * floorCheckDistance));
+    //}
 }

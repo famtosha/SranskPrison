@@ -22,9 +22,10 @@ public class MovingPlatform : MonoBehaviour, IInteraction
         endRotation = end.rotation;
     }
 
-    public void UseByAnotherObject()
+    public bool UseByAnotherObject()
     {
         _isOpened = !_isOpened;
+        return true;
     }
 
     private void Update()
@@ -43,5 +44,5 @@ public class MovingPlatform : MonoBehaviour, IInteraction
 
     public void HideInfo() { }
     public void ShowInfo() { }
-    public void UseByCharacter(UseAction use, out bool isUsed) { isUsed = false; }
+    public bool UseByCharacter(UseAction use) { return false; }
 }

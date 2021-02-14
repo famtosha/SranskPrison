@@ -14,7 +14,7 @@ public class Elevetor : MonoBehaviour, IInteraction
 
     public void HideInfo() { }
     public void ShowInfo() { }
-    public void UseByCharacter(UseAction use, out bool isUsed) { isUsed = false; }
+    public bool UseByCharacter(UseAction use) { return false; }
 
     private void Awake()
     {
@@ -23,9 +23,10 @@ public class Elevetor : MonoBehaviour, IInteraction
         _distance = Vector3.Distance(_startPositionVector, _endPositionVector);
     }
 
-    public void UseByAnotherObject()
+    public bool UseByAnotherObject()
     {
         Use();
+        return true;
     }
 
     private void Use()

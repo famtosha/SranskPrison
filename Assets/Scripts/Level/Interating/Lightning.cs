@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class Lightning : MonoBehaviour
 {
     public int damage = 1;

@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 
 [SelectionBase]
+[RequireComponent(typeof(Interacting))]
+[RequireComponent(typeof(CharacterMovement))]
 public class Character : MonoBehaviour, IDamagable
 {
     public bool isAvailable = true;

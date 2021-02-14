@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(Collider2D))]
 public class EnterTriggerAction : MonoBehaviour
 {
     public UnityEvent triggerEnter;

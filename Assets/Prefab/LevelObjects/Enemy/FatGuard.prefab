@@ -234,7 +234,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
-  moveSpeed: 0.1
+  moveSpeed: 0.05
   floorCheckDistance: 2
   lookDistance: 20
   itemDrop: {fileID: 0}
@@ -244,10 +244,6 @@ MonoBehaviour:
   gun: {fileID: 4331912061796030702}
   shootCD:
     cd: 2
-  eatCD:
-    cd: 10
-  eatTime: 5
-  healAmount: 1
   bulletPrefub: {fileID: 6903593669887284613, guid: 6ade37ee7b49a264ebe2d3c17c757c19, type: 3}
   sleepSign: {fileID: 2120056126526550874}
 --- !u!1001 &7049831879067925002

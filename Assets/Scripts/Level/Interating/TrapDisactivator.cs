@@ -10,11 +10,12 @@ public class TrapDisactivator : MonoBehaviour, IInteraction
     public void HideInfo() { }
     public void ShowInfo() { }
 
-    public void UseByCharacter(UseAction use, out bool isUsed) { isUsed = false; }
+    public bool UseByCharacter(UseAction use) { return false; }
 
-    public void UseByAnotherObject()
+    public bool UseByAnotherObject()
     {
         StartCoroutine(Open());
+        return true;
     }
 
     private IEnumerator Open()

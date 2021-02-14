@@ -28,13 +28,14 @@ public class Door : MonoBehaviour, IInteraction
         }
     }
 
-    public void UseByAnotherObject()
+    public bool UseByAnotherObject()
     {
         Use();
+        return true;
     }
 
-    public void UseByCharacter(UseAction use, out bool isUsed)
+    public bool UseByCharacter(UseAction use)
     {
-        isUsed = false;
+        return false;
     }
 }
