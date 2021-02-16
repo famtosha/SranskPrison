@@ -20,7 +20,9 @@ public class DialogSystem : MonoBehaviour
 
     public void AddToDialogQueue(DialogData dialog)
     {
+        if (dialogQueue.Contains(dialog)) Debug.LogError("2 same dialog in queue, probably dialogue cycle");
         dialogQueue.Enqueue(dialog);
+        if (dialog.nextDialog != null) AddToDialogQueue(dialog.nextDialog);
     }
 
     public void Update()

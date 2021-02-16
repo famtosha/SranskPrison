@@ -9,4 +9,5 @@ public class DialogData : ScriptableObject
     public float textSpeed = 10;
     public string text;
     public float exitTime = 3;
+    public DialogData nextDialog;
 }
