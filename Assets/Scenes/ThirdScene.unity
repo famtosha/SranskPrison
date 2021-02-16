@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: 11ed0aa16e9ed5d439986913548d8060, type: 3}
-  itemID: 0
+  keyID: 0
 --- !u!1001 &564994894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: 3765d617a3f8bf241b8eb7c25d5cc9bc, type: 3}
-  itemID: 1
+  keyID: 0
 --- !u!1001 &951014180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4555,7 +4555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: c1a4d0e88836dec43bc57582f4b28fd2, type: 3}
-  itemID: 2
+  keyID: 0
 --- !u!1001 &2104068890
 PrefabInstance:
   m_ObjectHideFlags: 0

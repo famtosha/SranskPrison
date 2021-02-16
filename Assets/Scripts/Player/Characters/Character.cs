@@ -8,7 +8,7 @@ public class Character : MonoBehaviour, IDamagable
 {
     public bool isAvailable = true;
     public virtual int playerID { get; }
-    public UseAction useAction => new UseAction(isHacker, CharacterSelector.instance.playersInventory.inventory[playerID]);
+    public UseAction useAction => new UseAction(isHacker, CharacterSelector.instance.playersInventory.inventory[playerID] as Key);
     public Health health = new Health(0, 4, 4);
 
     protected virtual bool isHacker => false;
@@ -28,9 +28,9 @@ public class Character : MonoBehaviour, IDamagable
     public void PickupItem(PickupableItem item)
     {
         var inventory = CharacterSelector.instance.playersInventory;
-        if (!inventory.hasItem(playerID))
+        if (!inventory.HasItem(playerID))
         {
-            if (inventory.AddItemToInventory(playerID, item.item))
+            if (inventory.AddItem(playerID, item.item))
             {
                 item.DestroyItem();
             }
@@ -53,6 +53,7 @@ public class Character : MonoBehaviour, IDamagable
     protected virtual void Update()
     {
         if (isActive) ActiveUpdate();
+        if (Input.GetKeyDown(KeyCode.B) && isActive) UseItem();
     }
 
     protected virtual void ActiveUpdate()
@@ -94,5 +95,14 @@ public class Character : MonoBehaviour, IDamagable
     public virtual void OnDeath()
     {
         Debug.LogError("player ded x_x");
+    }
+
+    public void UseItem()
+    {
+        var item = CharacterSelector.instance.playersInventory.TakeItem(playerID) as ConsumableItem;
+        if (item)
+        {
+            item.Use(gameObject);
+        }
     }
 }

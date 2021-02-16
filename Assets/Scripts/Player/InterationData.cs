@@ -16,9 +16,9 @@ public class InterationData<T> where T : class
 
     public void Change(T newInteraction)
     {
-        if (nowTouch != null) UnTouch(newInteraction);
+        if (nowTouch != null) UnTouch(nowTouch);
         nowTouch = newInteraction;
-        if (nowTouch != null) Touch(newInteraction);
+        if (nowTouch != null) Touch(nowTouch);
     }
 
     public void OnEnter(Collider2D collision)

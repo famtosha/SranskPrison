@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class Inventory
 {
@@ -10,7 +11,7 @@ public class Inventory
         SlotChanged?.Invoke(playerID, inventory[playerID]);
     }
 
-    public bool AddItemToInventory(int playerID, Item item)
+    public bool AddItem(int playerID, Item item)
     {
         bool result = false;
         if (inventory[playerID] == null)
@@ -22,7 +23,7 @@ public class Inventory
         return result;
     }
 
-    public bool hasItem(int playerID)
+    public bool HasItem(int playerID)
     {
         return inventory[playerID] != null;
     }
@@ -36,9 +37,16 @@ public class Inventory
         ItemUpdate(secondPlayerID);
     }
 
-    public void DestoryItem(int playerID)
+    public Item TakeItem(int playerID)
     {
+        var temp = inventory[playerID];
         inventory[playerID] = null;
         ItemUpdate(playerID);
+        return temp;
+    }
+
+    public void DestoryItem(int playerID)
+    {
+        TakeItem(playerID);
     }
 }

@@ -6,7 +6,7 @@ public class ItemPanel : Panel
     public override bool UseByCharacter(UseAction use)
     {
         bool result = false;
-        if (use?.item?.itemID == requireItemID)
+        if (use?.item?.keyID == requireItemID)
         {
             result = base.UseByCharacter(use);
         }
