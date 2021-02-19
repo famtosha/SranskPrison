@@ -22,7 +22,7 @@ public class NewItemInspector : Editor
 
             key.keyID = EditorGUILayout.IntField("Item Number", key.keyID);
 
-            if (GUILayout.Button("Reomove item")) myTarget.item = null;
+            if (GUILayout.Button("Remove item")) myTarget.item = null;
         }
         else
         {

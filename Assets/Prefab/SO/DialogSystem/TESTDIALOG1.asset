@@ -17,3 +17,4 @@ MonoBehaviour:
   textSpeed: 10
   text: HELLO? CAN I CUM HERE?
   exitTime: 3
+  nextDialog: {fileID: 11400000, guid: 6d55f03335064304c8d86e48f38ede82, type: 2}

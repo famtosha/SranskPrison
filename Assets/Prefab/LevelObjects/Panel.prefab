@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714a92ac70127c44e8aebc52494f8890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiUse: 0
   Info: {fileID: 3931671841212971990}
   doors:
   - {fileID: 0}
