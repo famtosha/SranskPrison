@@ -4,7 +4,7 @@ public class GeneratorTrap : MonoBehaviour
 {
     public GameObject lightningPrefub;
     public float lightningSpeed;
-    public CoolDown shootCD = new CoolDown(5);
+    public Timer shootCD = new Timer(5);
 
     public void Update()
     {

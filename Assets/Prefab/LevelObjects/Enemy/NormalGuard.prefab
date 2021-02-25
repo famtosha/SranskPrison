@@ -95,8 +95,9 @@ GameObject:
   - component: {fileID: 5745994706689198665}
   - component: {fileID: 6985438224222583486}
   - component: {fileID: 5203709794561215675}
+  - component: {fileID: 2047856625097937156}
   m_Layer: 10
-  m_Name: SlimGuard
+  m_Name: NormalGuard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8864508766845773892}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -227,15 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336d7f83165e5c1428604e119bb682f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  floor:
-    serializedVersion: 2
-    m_Bits: 2147483648
-  moveSpeed: 0.1
-  floorCheckDistance: 2
-  lookDistance: 20
   itemDrop: {fileID: 0}
   health:
     _max: 4
@@ -244,3 +236,26 @@ MonoBehaviour:
     cd: 3
   batRange: 1
   batDamage: 1
+  jumpForce: 1000
+--- !u!114 &2047856625097937156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864508766845773892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b877b5f7e72b349827843d0fbdab76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  moveSpeed: 0.1
+  floorCheckDistance: 2
+  lookDistance: 20
+  hight: 1.1

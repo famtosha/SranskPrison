@@ -6,6 +6,10 @@ public class HealthPack : ConsumableItem
     public int healAmount;
     public override void Use(GameObject user)
     {
-        user.GetComponent<Character>().Heal(healAmount);
+        var health = user.GetComponent<Character>().health;
+        if(health < health.max)
+        {
+            health.health += healAmount;
+        }
     }
 }

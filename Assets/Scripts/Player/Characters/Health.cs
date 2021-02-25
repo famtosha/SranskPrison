@@ -46,6 +46,18 @@ public class Health
         return health;
     }
 
+    public static Health operator -(Health health, int num)
+    {
+        health.health -= num;
+        return health;
+    }
+
+    public static Health operator +(Health health, int num)
+    {
+        health.health += num;
+        return health;
+    }
+
     public static bool operator >(Health firstOperand, int secondOperand)
     {
         return firstOperand.health > secondOperand;

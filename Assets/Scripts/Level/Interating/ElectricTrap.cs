@@ -2,8 +2,8 @@
 
 public class ElectricTrap : Trap
 {
-    public CoolDown activeTime = new CoolDown(3);
-    public CoolDown unactiveTime = new CoolDown(5);
+    public Timer activeTime = new Timer(3);
+    public Timer unactiveTime = new Timer(5);
 
     private void Update()
     {

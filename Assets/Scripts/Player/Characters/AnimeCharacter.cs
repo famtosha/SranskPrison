@@ -5,7 +5,7 @@ public class AnimeCharacter : Character
     public override int playerID => 0;
     public LayerMask level;
     public LayerMask zadr;
-    public CoolDown kickCD = new CoolDown(3);
+    public Timer kickCD = new Timer(3);
     public float kickForce;
     public float duckSize = 0.5f;
     public float duckSpeed = 0.5f;

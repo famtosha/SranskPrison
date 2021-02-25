@@ -155,7 +155,7 @@ MonoBehaviour:
   jumpForce: 500
   moveSpeedMultiply: 1
   ladderGrapSpeed: 0.3
-  charHeight: 1
+  charHeight: 1.2
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
@@ -692,6 +692,7 @@ MonoBehaviour:
   duckSize: 0.5
   duckSpeed: 0.5
   kickRange: 1
+  kickAngle: 0.5
 --- !u!114 &551585905490743467
 MonoBehaviour:
   m_ObjectHideFlags: 0

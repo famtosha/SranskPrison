@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5745994706689198665}
   - component: {fileID: 6985438224222583486}
   - component: {fileID: 2319142238581933014}
+  - component: {fileID: 4961270720547808793}
   m_Layer: 10
   m_Name: FatGuard
   m_TagString: Untagged
@@ -228,24 +229,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa75c5a425aea14438d86172f82a6c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  floor:
-    serializedVersion: 2
-    m_Bits: 2147483648
-  moveSpeed: 0.05
-  floorCheckDistance: 2
-  lookDistance: 20
   itemDrop: {fileID: 0}
   health:
     _max: 4
     _health: 4
   gun: {fileID: 4331912061796030702}
+  eatTime: 0
   shootCD:
     cd: 2
   bulletPrefub: {fileID: 6903593669887284613, guid: 6ade37ee7b49a264ebe2d3c17c757c19, type: 3}
-  sleepSign: {fileID: 2120056126526550874}
+--- !u!114 &4961270720547808793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864508766845773892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b877b5f7e72b349827843d0fbdab76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  moveSpeed: 0.1
+  floorCheckDistance: 2
+  lookDistance: 20
+  hight: 0
 --- !u!1001 &7049831879067925002
 PrefabInstance:
   m_ObjectHideFlags: 0

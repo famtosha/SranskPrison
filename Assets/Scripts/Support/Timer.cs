@@ -1,7 +1,8 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
-public class CoolDown
+public class Timer
 {
     public float cd;
 
@@ -13,7 +14,7 @@ public class CoolDown
     public void Reset() => cdLeft = cd;
     public void End() => cdLeft = 0;
 
-    public CoolDown(float cd)
+    public Timer(float cd)
     {
         this.cd = cd;
     }

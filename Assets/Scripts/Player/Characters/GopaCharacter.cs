@@ -6,8 +6,8 @@ public class GopaCharacter : Character
 
     public GameObject bulletPrefub;
     public Gun gun;
-    public CoolDown meleeCD = new CoolDown(1);
-    public CoolDown weaponCD = new CoolDown(1);
+    public Timer meleeCD = new Timer(1);
+    public Timer weaponCD = new Timer(1);
 
     private bool holdZadr = false;
 
@@ -46,7 +46,7 @@ public class GopaCharacter : Character
     private void PickupZadr()
     {
         var zadr = interacting.zadr;
-        if (zadr != null && zadr.nowTouch.canPickup)
+        if (zadr != null && zadr.nowTouch != null && zadr.nowTouch.canPickup)
         {
             zadr.nowTouch.isPickuped = true;
             holdZadr = true;
