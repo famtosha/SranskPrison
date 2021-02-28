@@ -232,8 +232,6 @@ MonoBehaviour:
   health:
     _max: 4
     _health: 4
-  batCD:
-    cd: 3
   batRange: 1
   batDamage: 1
   jumpForce: 1000
@@ -255,7 +253,7 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 2147483648
-  moveSpeed: 0.1
+  moveSpeed: 0.2
   floorCheckDistance: 2
   lookDistance: 20
   hight: 1.1

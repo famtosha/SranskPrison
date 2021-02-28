@@ -14,8 +14,7 @@ public class CoolerPlatrofm : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(startPosition, transform.localScale);
-        Gizmos.DrawWireCube(endPosition, transform.localScale);
+        Gizmos.color = Color.yellow;
         Gizmos.DrawLine(startPosition, endPosition);
     }
 }

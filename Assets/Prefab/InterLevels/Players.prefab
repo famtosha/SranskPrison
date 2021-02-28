@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551585904579387132}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.38, y: 0.71, z: 0}
+  m_LocalPosition: {x: -1.38, y: 0.623, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 6130424964885187966}
@@ -155,7 +155,7 @@ MonoBehaviour:
   jumpForce: 500
   moveSpeedMultiply: 1
   ladderGrapSpeed: 0.3
-  charHeight: 1.2
+  charHeight: 1.1
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
@@ -179,10 +179,6 @@ MonoBehaviour:
   selectIcon: {fileID: 6130424964265503853}
   bulletPrefub: {fileID: 6903593669887284613, guid: ed2666ea9c9f54a4c8b01e7bcc5ad612, type: 3}
   gun: {fileID: 551585905474150776}
-  meleeCD:
-    cd: 1
-  weaponCD:
-    cd: 1
 --- !u!114 &551585904579387127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,8 +377,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2147483648
-  biteCD:
-    cd: 5
 --- !u!114 &551585904653571688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +513,7 @@ GameObject:
   - component: {fileID: 551585905490743471}
   - component: {fileID: 551585905490743470}
   - component: {fileID: 551585905490743467}
+  - component: {fileID: 310923374}
   m_Layer: 6
   m_Name: Anime
   m_TagString: Untagged
@@ -655,7 +650,7 @@ MonoBehaviour:
   moveSpeed: 400
   stopSpeed: 20
   speedLimit: 0.1
-  jumpForce: 500
+  jumpForce: 350
   moveSpeedMultiply: 1
   ladderGrapSpeed: 0.3
   charHeight: 1
@@ -686,13 +681,11 @@ MonoBehaviour:
   zadr:
     serializedVersion: 2
     m_Bits: 64
-  kickCD:
-    cd: 5
-  kickForce: 1000
+  kickForce: 600
   duckSize: 0.5
   duckSpeed: 0.5
   kickRange: 1
-  kickAngle: 0.5
+  kickAngle: 0.75
 --- !u!114 &551585905490743467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,6 +698,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34350591646df5847b7b086a6b2413f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &310923374
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551585905490743507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 265b3a8542e31a14ebf172b945cd8f7b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &551585905598785670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6757655293565625063, guid: 0925ffd31ac40064f89e4014b19a8dac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.319
+      value: 0.194
       objectReference: {fileID: 0}
     - target: {fileID: 6757655293565625063, guid: 0925ffd31ac40064f89e4014b19a8dac, type: 3}
       propertyPath: m_LocalPosition.y

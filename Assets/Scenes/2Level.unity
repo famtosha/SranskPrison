@@ -1370,30 +1370,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &310923372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 551585905490743507, guid: 146974577798f5746866536de3eac8af, type: 3}
-  m_PrefabInstance: {fileID: 1877434956}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &310923374
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310923372}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 265b3a8542e31a14ebf172b945cd8f7b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &316234229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7029625218883476358, guid: 2655cedf567bbbb4ab60fa53018db418, type: 3}
@@ -5619,14 +5595,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 882089238}
     m_Modifications:
-    - target: {fileID: 551585904579387128, guid: 146974577798f5746866536de3eac8af, type: 3}
-      propertyPath: charHeight
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 551585904579387133, guid: 146974577798f5746866536de3eac8af, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.623
-      objectReference: {fileID: 0}
     - target: {fileID: 551585905140148454, guid: 146974577798f5746866536de3eac8af, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.44646478
@@ -5679,22 +5647,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Players
       objectReference: {fileID: 0}
-    - target: {fileID: 551585905490743470, guid: 146974577798f5746866536de3eac8af, type: 3}
-      propertyPath: kickForce
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 551585905490743470, guid: 146974577798f5746866536de3eac8af, type: 3}
-      propertyPath: kickCD.cd
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 551585905490743470, guid: 146974577798f5746866536de3eac8af, type: 3}
-      propertyPath: kickAngle
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 551585905490743471, guid: 146974577798f5746866536de3eac8af, type: 3}
-      propertyPath: jumpForce
-      value: 350
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146974577798f5746866536de3eac8af, type: 3}
 --- !u!114 &1877434957 stripped
@@ -5702,7 +5654,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 551585905490743470, guid: 146974577798f5746866536de3eac8af, type: 3}
   m_PrefabInstance: {fileID: 1877434956}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310923372}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1db776a79f43760489277d9f157c969b, type: 3}
