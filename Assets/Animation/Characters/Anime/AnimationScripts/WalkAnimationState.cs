@@ -13,7 +13,7 @@ public class WalkAnimationState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f)
+        if (Mathf.Abs(rb.velocity.magnitude) < 0.1f)
         {
             animator.SetBool("IsWalking", false);
         }

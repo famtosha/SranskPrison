@@ -5,11 +5,11 @@ public class Welder : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.transform.SetParent(transform);
+        if (collision.gameObject.GetComponent<Character>()) collision.gameObject.transform.SetParent(transform);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        collision.gameObject.transform.SetParent(null);
+        if (collision.gameObject.GetComponent<Character>()) collision.gameObject.transform.SetParent(null);
     }
 }

@@ -693,6 +693,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2319142238581933014, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
+      propertyPath: itemDrop
+      value: 
+      objectReference: {fileID: 882213200}
     - target: {fileID: 8864508766845773891, guid: 62242161f41a00f40865e0e390e0e2a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.5
@@ -2358,6 +2362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elevator (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6648531144113072915, guid: c2023ec2be3d27b4f8253f6b8a2a3273, type: 3}
+      propertyPath: elevetorSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7421082718578384910, guid: c2023ec2be3d27b4f8253f6b8a2a3273, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.076353
@@ -2408,6 +2416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2023ec2be3d27b4f8253f6b8a2a3273, type: 3}
+--- !u!1 &882213200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8346017755688549262, guid: 3aaf29bbccf13474fb0a4afe7a8877b2, type: 3}
+  m_PrefabInstance: {fileID: 418461606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &937985090
 MonoBehaviour:
   m_ObjectHideFlags: 0
