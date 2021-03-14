@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(PickableKey))]
-public class NewItemInspector : Editor
+public class PickableKeyInspector : Editor
 {
     public override void OnInspectorGUI()
     {

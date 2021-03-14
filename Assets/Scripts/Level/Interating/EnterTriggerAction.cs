@@ -9,6 +9,8 @@ public class EnterTriggerAction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.GetComponent<Character>()) return;
+
         triggerEnter.Invoke();
         if (singleUse) gameObject.SetActive(false);
     }

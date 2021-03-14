@@ -235,8 +235,6 @@ MonoBehaviour:
     _health: 4
   gun: {fileID: 4331912061796030702}
   eatTime: 0
-  shootCD:
-    cd: 2
   bulletPrefub: {fileID: 6903593669887284613, guid: 6ade37ee7b49a264ebe2d3c17c757c19, type: 3}
 --- !u!114 &4961270720547808793
 MonoBehaviour:
@@ -259,7 +257,7 @@ MonoBehaviour:
   moveSpeed: 0.1
   floorCheckDistance: 2
   lookDistance: 20
-  hight: 0
+  hight: 1.1
 --- !u!1001 &7049831879067925002
 PrefabInstance:
   m_ObjectHideFlags: 0

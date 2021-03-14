@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 public class PickupableItem : MonoBehaviour
@@ -12,7 +13,7 @@ public class PickupableItem : MonoBehaviour
         {
             character.PickupItem(this);
         }
-    }
+    }   
 
     public void DestroyItem()
     {

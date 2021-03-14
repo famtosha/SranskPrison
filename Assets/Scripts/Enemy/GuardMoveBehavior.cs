@@ -20,9 +20,14 @@ public class GuardMoveBehavior : MonoBehaviour
 
     public void Move()
     {
-        if (!IsWayClear() && IsGrounded()) TurnAround();
+        if (!IsWayClear() && IsGrounded() && !CanSeePlayer()) TurnAround();
         var velocityX = Mathf.Clamp(rb.velocity.x + (transform.right * moveSpeed).x, -2, 2);
         if (canMove) rb.velocity = new Vector2(velocityX, rb.velocity.y);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + -transform.up * hight);
     }
 
     private bool CanSeeWall()

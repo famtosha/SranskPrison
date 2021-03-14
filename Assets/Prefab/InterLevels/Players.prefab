@@ -650,7 +650,7 @@ MonoBehaviour:
   moveSpeed: 400
   stopSpeed: 20
   speedLimit: 0.1
-  jumpForce: 350
+  jumpForce: 500
   moveSpeedMultiply: 1
   ladderGrapSpeed: 0.15
   charHeight: 1
@@ -681,7 +681,7 @@ MonoBehaviour:
   zadr:
     serializedVersion: 2
     m_Bits: 64
-  kickForce: 600
+  kickForce: 750
   duckSize: 0.5
   duckSpeed: 0.5
   kickRange: 1
