@@ -27,12 +27,12 @@ public class DialogSystem : MonoBehaviour
 
     public void Update()
     {
-        if(!isShowingDialog) ProduceNextDioalog();
+        if (!isShowingDialog) ProduceNextDioalog();
     }
 
     public void ProduceNextDioalog()
     {
-        if(dialogQueue.Count > 0)
+        if (dialogQueue.Count > 0)
         {
             var nextDialog = new Dialog(dialogQueue.Dequeue());
             StartDialog(nextDialog);
@@ -49,8 +49,8 @@ public class DialogSystem : MonoBehaviour
 
     public IEnumerator ProduceDialog(Dialog dialog)
     {
-        dialogWindow.SetAuthor(dialog.data.player.ToString());
-        dialogWindow.SetAuthorImage(dialog.data.authorImage);
+        dialogWindow.SetAuthor(dialog.data.character.characterName.ToString());
+        dialogWindow.SetAuthorImage(dialog.data.image);
         while (dialog.CanRead())
         {
             dialogWindow.AppendDialogText(dialog.GetNextChar());
