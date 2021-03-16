@@ -17,7 +17,7 @@ public class DialogDataInspector : Editor
 
         character.objectReferenceValue = chacaters[EditorGUILayout.Popup("Character", Mathf.Max(chacaters.IndexOf(character.As<DialogCharacter>()), 0), chacaterNames)];
 
-        var sprites = ((DialogCharacter)character.objectReferenceValue).sprites;
+        var sprites = character.As<DialogCharacter>().sprites;
         var faceNames = sprites.Select(x => x.name).ToArray();
         image.objectReferenceValue = sprites[EditorGUILayout.Popup("Character face", Mathf.Max(sprites.IndexOf(character.As<Sprite>()), 0), faceNames)];
 

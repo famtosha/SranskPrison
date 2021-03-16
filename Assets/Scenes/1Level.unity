@@ -2345,6 +2345,10 @@ PrefabInstance:
       propertyPath: doors.Array.data[0]
       value: 
       objectReference: {fileID: 760097349}
+    - target: {fileID: 7940364384308267202, guid: ed9e6c6dbc4aedd4ab4de78aa1c5f7e3, type: 3}
+      propertyPath: requireItemID
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed9e6c6dbc4aedd4ab4de78aa1c5f7e3, type: 3}
 --- !u!1001 &870109911

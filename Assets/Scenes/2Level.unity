@@ -3696,6 +3696,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668dbaa1c059f9e4293a62cdc29909f9, type: 3}
+--- !u!1 &1398260771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2789383218462323987, guid: 668dbaa1c059f9e4293a62cdc29909f9, type: 3}
+  m_PrefabInstance: {fileID: 1398260770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1441945612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5502,6 +5507,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6491089220485374850, guid: 01da702d4314a154fb86a0f562a86d1f, type: 3}
+      propertyPath: doors.Array.data[0]
+      value: 
+      objectReference: {fileID: 1398260771}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01da702d4314a154fb86a0f562a86d1f, type: 3}
 --- !u!1001 &2008624322
