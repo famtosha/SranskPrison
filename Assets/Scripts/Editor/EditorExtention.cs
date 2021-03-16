@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 public static class EditorExtention
 {
+    public static T As<T>(this SerializedProperty property) where T : class
+    {
+        return property.objectReferenceValue as T;
+    }
+
     public static List<T> FindAssetsByType<T>() where T : UnityEngine.Object
     {
         List<T> assets = new List<T>();
