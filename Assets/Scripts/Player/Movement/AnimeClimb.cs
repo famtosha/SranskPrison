@@ -7,8 +7,8 @@ public class AnimeClimb : Climb
 
     public override void Jump()
     {
-        var transform = characterMovement.transform;
-        characterMovement.AddForce(transform.right + transform.up * ladderJumpoffSpeed);
         base.Jump();
+        var transform = characterMovement.transform;
+        characterMovement.AddForce((transform.right + transform.up).normalized * ladderJumpoffSpeed);
     }
 }

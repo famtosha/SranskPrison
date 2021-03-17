@@ -19,6 +19,7 @@ public class Guard : MonoBehaviour, IDamagable
     protected virtual void Update()
     {
         movement.Move();
+        if (movement.CanSeePlayer()) Attack();
     }
 
     public virtual void Attack()

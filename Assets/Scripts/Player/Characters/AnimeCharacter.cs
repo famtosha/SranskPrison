@@ -23,8 +23,8 @@ public class AnimeCharacter : Character
         {
             if (value == _isDuck) return;
             _isDuck = value;
-            var moveBehavior = move.currentMoveBehavior as Walk;
-            if (_isDuck || moveBehavior != null)
+            var moveBehavior = move.walk as Walk;
+            if (_isDuck)
             {
                 moveBehavior.moveSpeedMultiply *= duckSpeed;
                 move.sizeMultiply.y *= duckSize;

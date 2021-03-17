@@ -7,8 +7,8 @@ public class CharacterMovement : MonoBehaviour
     public Vector2 sizeMultiply = Vector2.one;
     public LayerMask floor;
     public bool canMove = true;
-
-    private MoveBehavior _currentMoveBehavior;
+    public MoveBehavior walk;
+    public MoveBehavior climb;
     public MoveBehavior currentMoveBehavior
     {
         get => _currentMoveBehavior;
@@ -19,15 +19,13 @@ public class CharacterMovement : MonoBehaviour
             _currentMoveBehavior?.Enter();
         }
     }
-    public MoveBehavior walk;
-    public MoveBehavior climb;
 
     private Ladder nearLadder;
     private bool isActive = true;
     private Rigidbody2D rb;
     public float defgravity;
     private BoxCollider2D boxCollider;
-
+    private MoveBehavior _currentMoveBehavior;
     private void Awake()
     {
         walk = Instantiate(walk);
@@ -100,8 +98,19 @@ public class CharacterMovement : MonoBehaviour
 
     public bool IsGounded()
     {
-        var center = transform.position.ToVector2() + boxCollider.offset;
+        Vector2 center = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale).MultiplyPoint(boxCollider.offset);
         var size = boxCollider.size * transform.localScale;
+        size.x /= 1.1f;
         return Physics2D.BoxCast(center, size, 0f, -transform.up, 0.1f, floor);
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    boxCollider = GetComponent<BoxCollider2D>();
+    //    Vector2 center = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale).MultiplyPoint(boxCollider.offset);
+    //    var size = boxCollider.size * transform.localScale;
+    //    size.x /= 1.1f;
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireCube(center - new Vector2(0, 0.1f), size);
+    //}
 }

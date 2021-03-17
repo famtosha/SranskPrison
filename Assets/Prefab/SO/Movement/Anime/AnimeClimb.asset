@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AnimeClimb
   m_EditorClassIdentifier: 
   ladderGrapSpeed: 0.1
-  ladderJumpoffSpeed: 300
+  ladderJumpoffSpeed: 1000
