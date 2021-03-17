@@ -20,7 +20,8 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    private Ladder nearLadder;
+    public Ladder nearLadder;
+
     private bool isActive = true;
     private Rigidbody2D rb;
     public float defgravity;

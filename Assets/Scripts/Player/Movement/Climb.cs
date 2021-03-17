@@ -19,11 +19,13 @@ public class Climb : MoveBehavior
 
     public override void PassiveMove(Vector2 moveDirection)
     {
-        //characterMovement.MovePosition(characterMovement.transform.position.ToVector2());
+
     }
 
     public override void Enter()
     {
+        var transform = characterMovement.transform;
+        transform.position = transform.position.SetX(characterMovement.nearLadder.gameObject.transform.position.x);
         characterMovement.gravityScale = 0;
         characterMovement.velocity = new Vector2(0, 0);
     }
