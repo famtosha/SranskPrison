@@ -25,14 +25,14 @@ public class AnimeCharacter : Character
             _isDuck = value;
             if (_isDuck)
             {
-                move.moveSpeedMultiply = duckSpeed;
-                move.charHeight = duckSize;
+                move.moveSpeedMultiply *= duckSpeed;
+                move.sizeMultiply.y *= duckSize;
                 transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
             }
             else
             {
-                move.moveSpeedMultiply = 1;
-                move.charHeight = 1;
+                move.moveSpeedMultiply /= duckSpeed;
+                move.sizeMultiply.y /= duckSize;
                 transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
             }
         }

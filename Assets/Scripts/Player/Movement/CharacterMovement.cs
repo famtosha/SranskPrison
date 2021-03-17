@@ -1,15 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed;
     public float stopSpeed;
     public float speedLimit;
     public float jumpForce;
-    public float moveSpeedMultiply = 1;
+    public Vector2 moveSpeedMultiply = Vector2.one;
+    public Vector2 sizeMultiply = Vector2.one;
     public float ladderGrapSpeed = 1;
-    public float charHeight = 1;
     public LayerMask floor;
     public bool canMove = true;
 
@@ -17,10 +18,12 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isOnLadder = false;
     private float _defgravity;
+    private BoxCollider2D boxCollider;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         _defgravity = rb.gravityScale;
     }
 
@@ -48,7 +51,7 @@ public class CharacterMovement : MonoBehaviour
 
         moveDirection = transform.TransformDirection(moveDirection);
         Vector2 moveVector = transform.right * moveDirection * moveSpeed;
-        if (IsGounded()) moveVector *= moveSpeedMultiply;
+        if (IsGounded()) moveVector *= moveSpeedMultiply.x;
         rb.AddForce(moveVector);
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -speedLimit, speedLimit), rb.velocity.y); // clamp X velocity
         if (moveDirection.x == 0f) Stop();                                                             // stop char if dont get input
@@ -76,13 +79,22 @@ public class CharacterMovement : MonoBehaviour
 
     public bool IsGounded()
     {
-        return Physics2D.Raycast(transform.position, -transform.up, charHeight, floor);
+        var center = transform.position.ToVector2() + boxCollider.offset;
+        var size = boxCollider.size * transform.localScale;
+        bool result = Physics2D.BoxCast(center, size, 0f, -transform.up, 0.1f, floor);
+
+        return result;
     }
 
     //private void OnDrawGizmos()
     //{
+    //    boxCollider = GetComponent<BoxCollider2D>();
+    //    var center = transform.position.ToVector2() + boxCollider.offset;
+    //    var size = boxCollider.size * transform.localScale;
     //    Gizmos.color = Color.red;
-    //    Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, charHeight, 0));
+    //    Gizmos.DrawWireCube(center, size);
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireCube(center + new Vector2(0, -0.1f), size);
     //}
 
     private void MoveOnLadder() //rewrite in furute

@@ -27,12 +27,12 @@ public class ZadrCharacter : Character, IPickupable
             _isSleeping = value;
             if (_isSleeping)
             {
-                move.moveSpeedMultiply = 0;
+                move.moveSpeedMultiply = new Vector2(0, 0);
                 sleepSign.SetActive(true);
             }
             else
             {
-                move.moveSpeedMultiply = 1;
+                move.moveSpeedMultiply = new Vector2(1, 1);
                 sleepSign.SetActive(false);
                 wakeUp?.Invoke();
             }

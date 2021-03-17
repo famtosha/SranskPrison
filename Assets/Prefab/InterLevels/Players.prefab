@@ -153,9 +153,9 @@ MonoBehaviour:
   stopSpeed: 20
   speedLimit: 0.1
   jumpForce: 500
-  moveSpeedMultiply: 1
+  moveSpeedMultiply: {x: 1, y: 1}
+  sizeMultiply: {x: 1, y: 1}
   ladderGrapSpeed: 0.15
-  charHeight: 1.1
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
@@ -344,9 +344,9 @@ MonoBehaviour:
   stopSpeed: 20
   speedLimit: 0.1
   jumpForce: 500
-  moveSpeedMultiply: 1
+  moveSpeedMultiply: {x: 1, y: 1}
+  sizeMultiply: {x: 1, y: 1}
   ladderGrapSpeed: 0.15
-  charHeight: 1
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
@@ -651,9 +651,9 @@ MonoBehaviour:
   stopSpeed: 20
   speedLimit: 0.1
   jumpForce: 500
-  moveSpeedMultiply: 1
+  moveSpeedMultiply: {x: 1, y: 1}
+  sizeMultiply: {x: 1, y: 1}
   ladderGrapSpeed: 0.15
-  charHeight: 1
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
