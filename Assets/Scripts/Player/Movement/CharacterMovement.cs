@@ -59,11 +59,11 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
-        if (!isOnLadder) TryGrabLadder();
+        if (isActive) TryLeaveLadder();
+        if (!isOnLadder && nearLadder) TryGrabLadder();
         if (isOnLadder && nearLadder == null) LeaveLadder();
         if (isActive && Input.GetKeyDown(KeyCode.Space)) currentMoveBehavior.Jump();
-        else currentMoveBehavior.PassiveMove(InputUtils.GetMoveInput());
+        Move();
     }
 
     public void Move()
@@ -86,7 +86,13 @@ public class CharacterMovement : MonoBehaviour
 
     public void TryGrabLadder()
     {
-        if (Input.GetAxis("Vertical") != 0 && nearLadder != null) currentMoveBehavior = climb;
+        var inputY = Input.GetAxis("Vertical");
+        if (inputY > 0 || (inputY < 0 && !IsGounded())) currentMoveBehavior = climb;
+    }
+
+    public void TryLeaveLadder()
+    {
+        if (Input.GetAxis("Vertical") < 0 && IsGounded()) currentMoveBehavior = walk;
     }
 
     public void LeaveLadder() => currentMoveBehavior = walk;
