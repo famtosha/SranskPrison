@@ -25,14 +25,15 @@ public class ZadrCharacter : Character, IPickupable
         set
         {
             _isSleeping = value;
-            if (_isSleeping)
+            var moveBehavior = move.currentMoveBehavior as Walk;
+            if (_isSleeping && moveBehavior != null)
             {
-                move.moveSpeedMultiply = new Vector2(0, 0);
+                moveBehavior.moveSpeedMultiply = new Vector2(0, 0);
                 sleepSign.SetActive(true);
             }
             else
             {
-                move.moveSpeedMultiply = new Vector2(1, 1);
+                moveBehavior.moveSpeedMultiply = new Vector2(1, 1);
                 sleepSign.SetActive(false);
                 wakeUp?.Invoke();
             }

@@ -149,17 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82ce2fd9bc07c842b3264894cd9e879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 400
-  stopSpeed: 20
-  speedLimit: 0.1
-  jumpForce: 500
-  moveSpeedMultiply: {x: 1, y: 1}
   sizeMultiply: {x: 1, y: 1}
-  ladderGrapSpeed: 0.15
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
   canMove: 1
+  currentMoveBehavior: {fileID: 0}
+  walk: {fileID: 11400000, guid: 7d9b52db1ce169a4e9edaf3ad50450b5, type: 2}
+  climb: {fileID: 11400000, guid: 75fc2b135f821e840bbf2c38a5950151, type: 2}
 --- !u!114 &551585904579387131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,17 +337,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82ce2fd9bc07c842b3264894cd9e879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
-  stopSpeed: 20
-  speedLimit: 0.1
-  jumpForce: 500
-  moveSpeedMultiply: {x: 1, y: 1}
   sizeMultiply: {x: 1, y: 1}
-  ladderGrapSpeed: 0.15
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
   canMove: 1
+  currentMoveBehavior: {fileID: 0}
+  walk: {fileID: 11400000, guid: a992aec14ffc65140a299a3459affaa0, type: 2}
+  climb: {fileID: 11400000, guid: 7088ed7e2e66e38438e9d4e9387b7b49, type: 2}
 --- !u!114 &551585904653571691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,17 +641,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82ce2fd9bc07c842b3264894cd9e879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 400
-  stopSpeed: 20
-  speedLimit: 0.1
-  jumpForce: 500
-  moveSpeedMultiply: {x: 1, y: 1}
   sizeMultiply: {x: 1, y: 1}
-  ladderGrapSpeed: 0.15
   floor:
     serializedVersion: 2
     m_Bits: 2147483648
   canMove: 1
+  currentMoveBehavior: {fileID: 0}
+  walk: {fileID: 11400000, guid: 49e207509546b9844922d646b7e7cceb, type: 2}
+  climb: {fileID: 11400000, guid: 80dfb78a18db2e94ca7dd4bb34571efa, type: 2}
 --- !u!114 &551585905490743470
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,15 +23,16 @@ public class AnimeCharacter : Character
         {
             if (value == _isDuck) return;
             _isDuck = value;
-            if (_isDuck)
+            var moveBehavior = move.currentMoveBehavior as Walk;
+            if (_isDuck || moveBehavior != null)
             {
-                move.moveSpeedMultiply *= duckSpeed;
+                moveBehavior.moveSpeedMultiply *= duckSpeed;
                 move.sizeMultiply.y *= duckSize;
                 transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
             }
             else
             {
-                move.moveSpeedMultiply /= duckSpeed;
+                moveBehavior.moveSpeedMultiply /= duckSpeed;
                 move.sizeMultiply.y /= duckSize;
                 transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
             }
@@ -43,7 +44,6 @@ public class AnimeCharacter : Character
         base.ActiveUpdate();
         kickCD.UpdateTimer(Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.J)) move.Jump();
         if (Input.GetKeyDown(KeyCode.L) && kickCD.isReady) Kick();
 
         isHoldDuck = Input.GetKey(KeyCode.K);

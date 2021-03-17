@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42065ee6cf46f7479a3d46435c22f90, type: 3}
+  m_Name: AnimeWalk
+  m_EditorClassIdentifier: 
+  moveSpeed: 400
+  stopSpeed: 20
+  speedLimit: 0.1
+  moveSpeedMultiply: {x: 1, y: 1}
+  jumpForce: 400
