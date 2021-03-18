@@ -10,8 +10,20 @@ public class AnimeCharacter : Character
     public float duckSize = 0.5f;
     public float duckSpeed = 0.5f;
     public float kickRange = 1;
+    public float kickAngle = 0;
 
-    public float kickAngle = 0.5f;
+    public GameObject kickAngeArrow;
+
+    private bool _isSelectingkickAngle;
+    public bool isSelectingkickAngle
+    {
+        get => _isSelectingkickAngle;
+        set
+        {
+            _isSelectingkickAngle = value;
+            kickAngeArrow.SetActive(value);
+        }
+    }
 
     private bool isHoldDuck = false;
 
@@ -42,10 +54,7 @@ public class AnimeCharacter : Character
     protected override void ActiveUpdate()
     {
         base.ActiveUpdate();
-        kickCD.UpdateTimer(Time.deltaTime);
-
-        if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady) Kick();
-
+        KickUpdate();
         isHoldDuck = Input.GetKey(InputSettings.current.sneak);
         SitDown();
         StandUp();
@@ -56,22 +65,50 @@ public class AnimeCharacter : Character
         if (!isDuck && isHoldDuck) isDuck = true;
     }
 
-    private void Kick()
+    public override void Deselect()
     {
+        isSelectingkickAngle = false;
+    }
+
+    private void UpdateKickAngle()
+    {
+        if (!TryGetZadr(out _)) isSelectingkickAngle = false;
+        kickAngle += 0.01f;
+        kickAngeArrow.transform.up = Vector3.Lerp(transform.right, transform.up, Mathf.PingPong(kickAngle, 1));
+    }
+
+    private void KickUpdate()
+    {
+        kickCD.UpdateTimer(Time.deltaTime);
+        if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady && !isSelectingkickAngle) isSelectingkickAngle = true;
+        else if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady && isSelectingkickAngle) Kick(Mathf.PingPong(kickAngle, 1));
+        if (isSelectingkickAngle) UpdateKickAngle();
+    }
+
+    private bool TryGetZadr(out Rigidbody2D zadrRB)
+    {
+        zadrRB = null;
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.right, kickRange, zadr);
         if (hits.Length > 0)
         {
             foreach (var hit in hits)
             {
-                if (hit.collider.gameObject.TryGetComponent(out ZadrCharacter zadr))
-                {
-                    var zadrRB = zadr.gameObject.GetComponent<Rigidbody2D>();
-                    var kickDirection = Vector3.Lerp(transform.right, transform.up, kickAngle);
-                    zadrRB.AddForce(kickDirection * kickForce);
-                    kickCD.Reset();
-                    return;
-                }
+                var go = hit.collider.gameObject;
+                if (go.HasComponent<ZadrCharacter>()) zadrRB = go.GetComponent<Rigidbody2D>();
             }
+        }
+        return zadrRB != null;
+    }
+
+    private void Kick(float angle)
+    {
+        if (TryGetZadr(out var zadrRB))
+        {
+            var kickDirection = Vector3.Lerp(transform.right, transform.up, angle);
+            zadrRB.AddForce(kickDirection * kickForce);
+            kickCD.Reset();
+            isSelectingkickAngle = false;
+            return;
         }
     }
 
