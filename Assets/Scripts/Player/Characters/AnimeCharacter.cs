@@ -44,9 +44,9 @@ public class AnimeCharacter : Character
         base.ActiveUpdate();
         kickCD.UpdateTimer(Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.L) && kickCD.isReady) Kick();
+        if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady) Kick();
 
-        isHoldDuck = Input.GetKey(KeyCode.K);
+        isHoldDuck = Input.GetKey(InputSettings.current.sneak);
         SitDown();
         StandUp();
     }

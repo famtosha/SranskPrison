@@ -53,7 +53,7 @@ public class Character : MonoBehaviour, IDamagable
     protected virtual void Update()
     {
         if (isActive) ActiveUpdate();
-        if (Input.GetKeyDown(KeyCode.B) && isActive) UseItem();
+        if (Input.GetKeyDown(InputSettings.current.useItem) && isActive) UseItem();
     }
 
     protected virtual void ActiveUpdate()

@@ -79,8 +79,8 @@ public class ZadrCharacter : Character, IPickupable
     protected override void ActiveUpdate()
     {
         base.ActiveUpdate();
-        if (Input.GetKeyDown(KeyCode.K)) StartSleep();
-        if (Input.GetKeyDown(KeyCode.L)) Bite();
+        if (Input.GetKeyDown(InputSettings.current.sleep)) StartSleep();
+        if (Input.GetKeyDown(InputSettings.current.bite)) Bite();
     }
 
     protected override void Update()

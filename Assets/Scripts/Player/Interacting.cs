@@ -13,14 +13,14 @@ public class Interacting : MonoBehaviour
         character = GetComponent<Character>();
 
         zadr = new InterationData<IPickupable>(x => { return; }, x => { return; });
-        anotherCharacter = new InterationData<Character>(x => GiveItemInfo.instance.HideInfo(), y => {GiveItemInfo.instance.ShowInfo(); });
+        anotherCharacter = new InterationData<Character>(x => GiveItemInfo.instance.HideInfo(), y => { GiveItemInfo.instance.ShowInfo(); });
         interactionNowTouch = new InterationData<IInteraction>(x => x.HideInfo(), y => y.ShowInfo());
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && interactionNowTouch.nowTouch != null && interactionNowTouch.nowTouch.UseByCharacter(character.useAction)) character.RemoveItem();
-        if (Input.GetKeyDown(KeyCode.T)) anotherCharacter.nowTouch?.Trade(character.playerID);
+        if (Input.GetKeyDown(InputSettings.current.useItem) && interactionNowTouch.nowTouch != null && interactionNowTouch.nowTouch.UseByCharacter(character.useAction)) character.RemoveItem();
+        if (Input.GetKeyDown(InputSettings.current.giveItem)) anotherCharacter.nowTouch?.Trade(character.playerID);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

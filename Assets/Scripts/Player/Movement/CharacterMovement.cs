@@ -62,7 +62,7 @@ public class CharacterMovement : MonoBehaviour
         if (isActive) TryLeaveLadder();
         if (!isOnLadder && nearLadder) TryGrabLadder();
         if (isOnLadder && nearLadder == null) LeaveLadder();
-        if (isActive && Input.GetKeyDown(KeyCode.Space)) currentMoveBehavior.Jump();
+        if (isActive && Input.GetKeyDown(InputSettings.current.jump)) currentMoveBehavior.Jump();
         Move();
     }
 
