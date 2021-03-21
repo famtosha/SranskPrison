@@ -17,17 +17,17 @@ public class InputSettingsData : ScriptableObject
     public KeyCode useItem = KeyCode.B;
 
     [Header("Anime")]
-    public KeyCode sneak = KeyCode.K;
     public KeyCode jump = KeyCode.Space;
+    public KeyCode sneak = KeyCode.K;
     public KeyCode kick = KeyCode.L;
 
     [Header("Gopa")]
     public KeyCode shoot = KeyCode.J;
-    public KeyCode meeleAttack = KeyCode.Space;
-    public KeyCode pickupZadr = KeyCode.J;
+    public KeyCode meeleAttack = KeyCode.K;
+    public KeyCode pickupZadr = KeyCode.L;
 
     [Header("Zadr")]
     public KeyCode hackPanel = KeyCode.E;
-    public KeyCode bite = KeyCode.L;
     public KeyCode sleep = KeyCode.K;
+    public KeyCode bite = KeyCode.L;
 }

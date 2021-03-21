@@ -19,7 +19,7 @@ public class Interacting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(InputSettings.current.useItem) && interactionNowTouch.nowTouch != null && interactionNowTouch.nowTouch.UseByCharacter(character.useAction)) character.RemoveItem();
+        if (Input.GetKeyDown(InputSettings.current.hackPanel) && interactionNowTouch.nowTouch != null && interactionNowTouch.nowTouch.UseByCharacter(character.useAction)) character.RemoveItem();
         if (Input.GetKeyDown(InputSettings.current.giveItem)) anotherCharacter.nowTouch?.Trade(character.playerID);
     }
 

@@ -67,6 +67,7 @@ public class AnimeCharacter : Character
 
     public override void Deselect()
     {
+        base.Deselect();
         isSelectingkickAngle = false;
     }
 
