@@ -9,6 +9,14 @@ public class CharacterMovement : MonoBehaviour
     public bool canMove = true;
     public MoveBehavior walk;
     public MoveBehavior climb;
+    public Ladder nearLadder; 
+    public float defgravity;
+
+    private bool isActive = true;
+    private Rigidbody2D rb;
+    private BoxCollider2D boxCollider;
+    private MoveBehavior _currentMoveBehavior;
+
     public MoveBehavior currentMoveBehavior
     {
         get => _currentMoveBehavior;
@@ -20,13 +28,10 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    public Ladder nearLadder;
+    public bool isOnLadder => currentMoveBehavior is Climb;
+    public Vector2 velocity { get => rb.velocity; set => rb.velocity = value; }
+    public float gravityScale { get => rb.gravityScale; set => rb.gravityScale = value; }
 
-    private bool isActive = true;
-    private Rigidbody2D rb;
-    public float defgravity;
-    private BoxCollider2D boxCollider;
-    private MoveBehavior _currentMoveBehavior;
     private void Awake()
     {
         walk = Instantiate(walk);
@@ -43,9 +48,15 @@ public class CharacterMovement : MonoBehaviour
         climb.characterMovement = this;
         currentMoveBehavior = walk;
     }
-    public bool isOnLadder => currentMoveBehavior is Climb;
-    public Vector2 velocity { get => rb.velocity; set => rb.velocity = value; }
-    public float gravityScale { get => rb.gravityScale; set => rb.gravityScale = value; }
+
+    private void Update()
+    {
+        if (isActive) TryLeaveLadder();
+        if (!isOnLadder && nearLadder) TryGrabLadder();
+        if (isOnLadder && nearLadder == null) LeaveLadder();
+        if (isActive && Input.GetKeyDown(InputSettings.current.jump)) currentMoveBehavior.Jump();
+        Move();
+    }
 
     public void AddForce(Vector2 force)
     {
@@ -55,15 +66,6 @@ public class CharacterMovement : MonoBehaviour
     public void MovePosition(Vector2 position)
     {
         rb.MovePosition(position);
-    }
-
-    private void FixedUpdate()
-    {
-        if (isActive) TryLeaveLadder();
-        if (!isOnLadder && nearLadder) TryGrabLadder();
-        if (isOnLadder && nearLadder == null) LeaveLadder();
-        if (isActive && Input.GetKeyDown(InputSettings.current.jump)) currentMoveBehavior.Jump();
-        Move();
     }
 
     public void Move()

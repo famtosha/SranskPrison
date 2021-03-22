@@ -19,7 +19,7 @@ public class Walk : MoveBehavior
         moveDirection = characterMovement.transform.TransformDirection(moveDirection);
         Vector2 moveVector = characterMovement.transform.right * moveDirection * moveSpeed;
         if (characterMovement.IsGounded()) moveVector *= moveSpeedMultiply.x;
-        characterMovement.AddForce(moveVector);
+        characterMovement.AddForce(moveVector * Time.deltaTime);
         characterMovement.velocity = new Vector2(Mathf.Clamp(characterMovement.velocity.x, -speedLimit, speedLimit), characterMovement.velocity.y);
         if (moveDirection.x == 0f) Stop();
     }

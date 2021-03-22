@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd08c1904501c443a6601c979926842, type: 3}
   m_Name: GopaGrab
   m_EditorClassIdentifier: 
-  ladderGrapSpeed: 0.05
+  ladderGrapSpeed: 0.1

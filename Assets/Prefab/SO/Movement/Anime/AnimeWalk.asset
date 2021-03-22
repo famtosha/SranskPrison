@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42065ee6cf46f7479a3d46435c22f90, type: 3}
   m_Name: AnimeWalk
   m_EditorClassIdentifier: 
-  moveSpeed: 400
+  moveSpeed: 15000
   stopSpeed: 20
   speedLimit: 0.1
   moveSpeedMultiply: {x: 1, y: 1}

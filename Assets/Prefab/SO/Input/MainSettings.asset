@@ -19,12 +19,12 @@ MonoBehaviour:
   moveDown: 115
   giveItem: 116
   useItem: 98
-  sneak: 107
   jump: 32
+  sneak: 107
   kick: 108
   shoot: 106
-  meeleAttack: 32
-  pickupZadr: 106
+  meeleAttack: 107
+  pickupZadr: 108
   hackPanel: 101
-  bite: 108
   sleep: 107
+  bite: 108

@@ -56,7 +56,7 @@ public class CharacterSelector : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(InputSettings.current.useItem) && canChangeCharacter) selectedCharacter++;
+        if (Input.GetKeyDown(InputSettings.current.nextCharacter) && canChangeCharacter) selectedCharacter++;
         UpdateCameraPosition();
     }
 
