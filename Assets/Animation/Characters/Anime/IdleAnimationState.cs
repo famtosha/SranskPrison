@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkAnimationState : StateMachineBehaviour
+public class IdleAnimationState : StateMachineBehaviour
 {
     private Rigidbody2D rb;
 
@@ -13,13 +13,7 @@ public class WalkAnimationState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Mathf.Abs(rb.velocity.magnitude) < 0.1f)
-        {
-            animator.SetBool("IsWalking", false);
-        }
-        if (rb.velocity.y > 0.1f)
-        {
-            animator.SetTrigger("Jump");
-        }
+        if (Mathf.Abs(rb.velocity.magnitude) > 0.01f) animator.SetBool("IsWalking", true);
+        if (rb.velocity.y > 0.1f) animator.SetTrigger("Jump");
     }
 }

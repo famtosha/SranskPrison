@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2997972063901914740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,5 +97,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightningPrefub: {fileID: 4861966376867612683, guid: f43ddf12835984446907e51e9b3be371, type: 3}
   lightningSpeed: 100
-  shootCD:
-    cd: 5

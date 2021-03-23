@@ -159,6 +159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286c527aa0b706f41a15dab1f727a500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stepSounds:
+  - {fileID: 8300000, guid: 8345cd486ea17cc4885af318afe094ba, type: 3}
+  - {fileID: 8300000, guid: d78ce4489d3ed084c806e7df4bd6736b, type: 3}
+  - {fileID: 8300000, guid: 161f4194b9c43f64dbfb52cb134ddf7b, type: 3}
 --- !u!1101 &2907647798287961470
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
