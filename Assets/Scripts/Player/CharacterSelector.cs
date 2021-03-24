@@ -35,6 +35,8 @@ public class CharacterSelector : MonoBehaviour
             item.Deselect();
         }
         currentCharacter.Select();
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
     }
 
     private void UpdateCameraPosition()

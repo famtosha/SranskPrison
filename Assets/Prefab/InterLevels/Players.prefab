@@ -695,7 +695,7 @@ MonoBehaviour:
   duckSize: 0.5
   duckSpeed: 0.5
   kickRange: 1
-  kickAngle: 0.75
+  kickAngleChangeSpeed: 1
   kickAngeArrow: {fileID: 2810850712590841298}
 --- !u!114 &551585905490743467
 MonoBehaviour:

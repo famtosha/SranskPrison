@@ -10,7 +10,8 @@ public class AnimeCharacter : Character
     public float duckSize = 0.5f;
     public float duckSpeed = 0.5f;
     public float kickRange = 1;
-    public float kickAngle = 0;
+    public float kickAngleChangeSpeed = 10;
+    private float kickAngle = 0;
 
     public GameObject kickAngeArrow;
 
@@ -74,7 +75,7 @@ public class AnimeCharacter : Character
     private void UpdateKickAngle()
     {
         if (!TryGetZadr(out _)) isSelectingkickAngle = false;
-        kickAngle += 0.01f;
+        kickAngle += kickAngleChangeSpeed * Time.deltaTime;
         kickAngeArrow.transform.up = Vector3.Lerp(transform.right, transform.up, Mathf.PingPong(kickAngle, 1));
     }
 
