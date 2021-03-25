@@ -7,11 +7,18 @@ public class Panel : MonoBehaviour, IInteraction
     public GameObject Info;
     public List<GameObject> doors = new List<GameObject>();
     public virtual OpenRequire openType => OpenRequire.Nothing;
+    public AudioClip activateSound;
 
     private bool isActive = false;
+    private AudioSource audioSource;
 
     public void HideInfo() => Info.SetActive(false);
     public void ShowInfo() => Info.SetActive(true);
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     protected virtual bool CanUse()
     {
@@ -41,6 +48,7 @@ public class Panel : MonoBehaviour, IInteraction
             }
             if (!multiUse) isActive = !isActive;
         }
+        audioSource?.PlayOneShot(activateSound);
     }
 
     public virtual bool UseByCharacter(UseAction use)

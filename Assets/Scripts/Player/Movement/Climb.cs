@@ -12,7 +12,6 @@ public class Climb : MoveBehavior
 
     public override void ActiveMove(Vector2 moveDirection)
     {
-        Debug.Log($"New:{moveDirection.y}");
         characterMovement.UpdateLookDirection(moveDirection.x);
         Vector2 grabDirection = characterMovement.transform.up * moveDirection.y * ladderGrapSpeed;
 
