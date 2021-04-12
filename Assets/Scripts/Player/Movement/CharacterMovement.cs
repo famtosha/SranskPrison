@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
     public bool canMove = true;
     public MoveBehavior walk;
     public MoveBehavior climb;
-    public Ladder nearLadder; 
+    public Ladder nearLadder;
     public float defgravity;
     public Action onJump;
 
@@ -58,6 +58,15 @@ public class CharacterMovement : MonoBehaviour
         if (isOnLadder && nearLadder == null) LeaveLadder();
         if (isActive && Input.GetKeyDown(InputSettings.current.jump)) currentMoveBehavior.Jump();
         Move();
+        ClampRamp();
+    }
+
+    private void ClampRamp()
+    {
+        if (IsGrounded(out var surfaceNormal) && Vector2.Dot(surfaceNormal, Vector2.up) > 0.1f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+        }
     }
 
     public void AddForce(Vector2 force)
@@ -91,12 +100,12 @@ public class CharacterMovement : MonoBehaviour
     public void TryGrabLadder()
     {
         var inputY = Input.GetAxis("Vertical");
-        if (inputY > 0 || (inputY < 0 && !IsGounded())) currentMoveBehavior = climb;
+        if (inputY > 0 || (inputY < 0 && !IsGrounded())) currentMoveBehavior = climb;
     }
 
     public void TryLeaveLadder()
     {
-        if (Input.GetAxis("Vertical") < 0 && IsGounded()) currentMoveBehavior = walk;
+        if (Input.GetAxis("Vertical") < 0 && IsGrounded()) currentMoveBehavior = walk;
     }
 
     public void LeaveLadder() => currentMoveBehavior = walk;
@@ -107,12 +116,22 @@ public class CharacterMovement : MonoBehaviour
         if (xAxis < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
-    public bool IsGounded()
+    public bool IsGrounded()
     {
         Vector2 center = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale).MultiplyPoint(boxCollider.offset);
         var size = boxCollider.size * transform.localScale;
         size.x /= 1.1f;
         return Physics2D.BoxCast(center, size, 0f, -transform.up, 0.1f, floor);
+    }
+
+    public bool IsGrounded(out Vector2 groundNormal)
+    {
+        Vector2 center = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale).MultiplyPoint(boxCollider.offset);
+        var size = boxCollider.size * transform.localScale;
+        size.x /= 1.1f;
+        var hit = Physics2D.BoxCast(center, size, 0f, -transform.up, 0.1f, floor);
+        groundNormal = hit.normal;
+        return hit;
     }
 
     //private void OnDrawGizmos()

@@ -18,7 +18,7 @@ public class Walk : MoveBehavior
         characterMovement.UpdateLookDirection(moveDirection.x);
         moveDirection = characterMovement.transform.TransformDirection(moveDirection);
         Vector2 moveVector = characterMovement.transform.right * moveDirection * moveSpeed;
-        if (characterMovement.IsGounded()) moveVector *= moveSpeedMultiply.x;
+        if (characterMovement.IsGrounded()) moveVector *= moveSpeedMultiply.x;
         characterMovement.AddForce(moveVector * Time.deltaTime);
         characterMovement.velocity = new Vector2(Mathf.Clamp(characterMovement.velocity.x, -speedLimit, speedLimit), characterMovement.velocity.y);
         if (moveDirection.x == 0f) Stop();
@@ -26,7 +26,7 @@ public class Walk : MoveBehavior
 
     private void Stop()
     {
-        if (characterMovement.IsGounded())
+        if (characterMovement.IsGrounded())
         {
             var stopVelocity = new Vector2(characterMovement.velocity.x, 0);
 
@@ -40,7 +40,7 @@ public class Walk : MoveBehavior
 
     public override void PassiveMove(Vector2 moveDirection)
     {
-        if (characterMovement.IsGounded())
+        if (characterMovement.IsGrounded())
         {
             Stop();
         }
