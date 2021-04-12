@@ -2814,13 +2814,21 @@ PrefabInstance:
       propertyPath: doors.Array.data[0]
       value: 
       objectReference: {fileID: 297978298}
+    - target: {fileID: 1407400342531525011, guid: 521b9529a41ddea4d9a4db9e21f47185, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407400342531525011, guid: 521b9529a41ddea4d9a4db9e21f47185, type: 3}
+      propertyPath: m_Size.y
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1407400342531525013, guid: 521b9529a41ddea4d9a4db9e21f47185, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.691055
+      value: 42.76
       objectReference: {fileID: 0}
     - target: {fileID: 1407400342531525013, guid: 521b9529a41ddea4d9a4db9e21f47185, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.520608
+      value: -9.98
       objectReference: {fileID: 0}
     - target: {fileID: 1407400342531525013, guid: 521b9529a41ddea4d9a4db9e21f47185, type: 3}
       propertyPath: m_LocalPosition.z

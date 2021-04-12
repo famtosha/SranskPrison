@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,6 +12,7 @@ public class CharacterMovement : MonoBehaviour
     public MoveBehavior climb;
     public Ladder nearLadder; 
     public float defgravity;
+    public Action onJump;
 
     private bool isActive = true;
     private Rigidbody2D rb;

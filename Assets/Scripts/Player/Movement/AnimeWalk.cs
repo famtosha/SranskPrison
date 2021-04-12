@@ -8,5 +8,6 @@ public class AnimeWalk : Walk
     public override void Jump()
     {
         if (characterMovement.IsGounded()) characterMovement.AddForce(characterMovement.transform.up * jumpForce);
+        characterMovement.onJump?.Invoke();
     }
 }

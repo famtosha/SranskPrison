@@ -4,6 +4,7 @@
 public class GeneratorTrap : MonoBehaviour
 {
     public GameObject lightningPrefub;
+    public Transform lightOrigin;
     public float lightningSpeed;
     public Timer shootCD = new Timer(5);
     public AudioClip shootSound;
@@ -23,7 +24,7 @@ public class GeneratorTrap : MonoBehaviour
 
     public void Shoot()
     {
-        var lightning = Instantiate(lightningPrefub, transform.position, Quaternion.identity);
+        var lightning = Instantiate(lightningPrefub, lightOrigin.position, lightOrigin.rotation);
         lightning.GetComponent<Rigidbody2D>().AddForce(transform.right * lightningSpeed);
         shootCD.Reset();
         audioSource.PlayOneShot(shootSound);
