@@ -65,7 +65,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (IsGrounded(out var surfaceNormal) && Vector2.Dot(surfaceNormal, Vector2.up) > 0.1f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, 0));
         }
     }
 
