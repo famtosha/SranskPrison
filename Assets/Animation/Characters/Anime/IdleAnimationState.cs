@@ -22,7 +22,7 @@ public class IdleAnimationState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Mathf.Abs(rb.velocity.magnitude) > 0.01f) animator.SetBool("IsWalking", true);
+        if (Mathf.Abs(rb.velocity.x) > 0.01f) animator.SetBool("IsWalking", true);
         if (isJump)
         {
             animator.SetTrigger("Jump");

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class JumpAnimationState : StateMachineBehaviour
 {
-    public AudioClip jumpSound;
+    public List<AudioClip> jumpSound = new List<AudioClip>();
 
     private AudioSource audio;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         audio = animator.gameObject.GetComponent<AudioSource>();
-        audio.PlayOneShot(jumpSound);
+        audio.PlayOneShot(jumpSound.GetRandom());
     }
 }

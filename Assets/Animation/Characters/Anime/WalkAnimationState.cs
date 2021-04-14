@@ -29,7 +29,7 @@ public class WalkAnimationState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         stepCD.UpdateTimer(Time.deltaTime);
-        if (Mathf.Abs(rb.velocity.magnitude) < 0.1f) animator.SetBool("IsWalking", false);
+        if (Mathf.Abs(rb.velocity.x) < 0.1f) animator.SetBool("IsWalking", false);
         if (stepCD.isReady && Mathf.Abs(rb.velocity.x) > 0.01f) PlayStepSound();
         if (isJump)
         {

@@ -4959,7 +4959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 1000
-  shootSound: {fileID: 8300000, guid: b7c35e78e1eb53142b85b02a2879c1c9, type: 3}
+  shootSound: {fileID: 8300000, guid: b111bb053a48705418f30062bcc0a932, type: 3}
 --- !u!199 &7377521841023447025
 ParticleSystemRenderer:
   serializedVersion: 6
