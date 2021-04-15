@@ -63,9 +63,13 @@ public class CharacterMovement : MonoBehaviour
 
     private void ClampRamp()
     {
-        if (IsGrounded(out var surfaceNormal) && Vector2.Dot(surfaceNormal, Vector2.up) > 0.1f)
+        if (IsGrounded(out Vector2 surfaceNormal))
         {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, 0));
+            var dot = Vector2.Dot(surfaceNormal, Vector2.up);
+            if (dot < 1)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, 0));
+            }
         }
     }
 
@@ -133,14 +137,4 @@ public class CharacterMovement : MonoBehaviour
         groundNormal = hit.normal;
         return hit;
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    boxCollider = GetComponent<BoxCollider2D>();
-    //    Vector2 center = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale).MultiplyPoint(boxCollider.offset);
-    //    var size = boxCollider.size * transform.localScale;
-    //    size.x /= 1.1f;
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireCube(center - new Vector2(0, 0.1f), size);
-    //}
 }

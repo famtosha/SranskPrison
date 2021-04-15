@@ -152,7 +152,7 @@ MonoBehaviour:
   sizeMultiply: {x: 1, y: 1}
   floor:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 2147485696
   canMove: 1
   walk: {fileID: 11400000, guid: 7d9b52db1ce169a4e9edaf3ad50450b5, type: 2}
   climb: {fileID: 11400000, guid: 75fc2b135f821e840bbf2c38a5950151, type: 2}
@@ -343,7 +343,7 @@ MonoBehaviour:
   sizeMultiply: {x: 1, y: 1}
   floor:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 2147485696
   canMove: 1
   walk: {fileID: 11400000, guid: a992aec14ffc65140a299a3459affaa0, type: 2}
   climb: {fileID: 11400000, guid: 7088ed7e2e66e38438e9d4e9387b7b49, type: 2}
@@ -779,7 +779,7 @@ MonoBehaviour:
   sizeMultiply: {x: 1, y: 1}
   floor:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 2147485696
   canMove: 1
   walk: {fileID: 11400000, guid: 49e207509546b9844922d646b7e7cceb, type: 2}
   climb: {fileID: 11400000, guid: 80dfb78a18db2e94ca7dd4bb34571efa, type: 2}

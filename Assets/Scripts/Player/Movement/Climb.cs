@@ -12,6 +12,7 @@ public class Climb : MoveBehavior
 
     public override void ActiveMove(Vector2 moveDirection)
     {
+        characterMovement.velocity = new Vector2(0, 0);
         characterMovement.UpdateLookDirection(moveDirection.x);
         Vector2 grabDirection = characterMovement.transform.up * moveDirection.y * ladderGrapSpeed;
 
@@ -22,11 +23,14 @@ public class Climb : MoveBehavior
         var clamped = Mathf.Clamp(current, min, max);
 
         characterMovement.MovePosition(transform.position.SetY(clamped));
+        transform.position = transform.position.SetX(characterMovement.nearLadder.transform.position.x);
     }
 
     public override void PassiveMove(Vector2 moveDirection)
     {
-
+        var transform = characterMovement.transform;
+        characterMovement.velocity = new Vector2(0, 0);
+        transform.position = transform.position.SetX(characterMovement.nearLadder.transform.position.x);
     }
 
     public override void Enter()

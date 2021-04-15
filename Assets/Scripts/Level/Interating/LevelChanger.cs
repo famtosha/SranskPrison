@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelChanger : MonoBehaviour
+public class LevelChanger : MonoBehaviour, IInteraction
 {
     [Min(0)] public int sceneIndex;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public OpenRequire openType => OpenRequire.Closed;
+
+    public void Load()
     {
-        if (collision.GetComponent<Character>())
-        {
-            SceneManager.LoadScene(sceneIndex);
-        }
+        SceneManager.LoadScene(sceneIndex);
     }
+
+    public bool UseByCharacter(UseAction use) => false;
+
+    public bool UseByAnotherObject()
+    {
+        Load();
+        return true;
+    }
+
+    public void ShowInfo() { }
+
+    public void HideInfo() { }
 }

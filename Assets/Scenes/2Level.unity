@@ -3498,6 +3498,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -9.25
       objectReference: {fileID: 0}
+    - target: {fileID: 6571194068406176878, guid: c2023ec2be3d27b4f8253f6b8a2a3273, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6648531144113072914, guid: c2023ec2be3d27b4f8253f6b8a2a3273, type: 3}
       propertyPath: m_Name
       value: Elevator
@@ -4997,11 +5001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 551585905490743504, guid: 146974577798f5746866536de3eac8af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.45
+      value: -5.19
       objectReference: {fileID: 0}
     - target: {fileID: 551585905490743504, guid: 146974577798f5746866536de3eac8af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5999999
+      value: 0.66
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146974577798f5746866536de3eac8af, type: 3}
