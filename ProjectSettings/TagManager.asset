@@ -34,8 +34,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - LaserUI
+  - MiniGame
   - Level
   m_SortingLayers:
   - name: Background
