@@ -15,6 +15,8 @@ public class AnimeCharacter : Character
 
     public GameObject kickAngeArrow;
 
+    [SerializeField] private AnimatorWrapper animatorWrapper = null;
+
     private bool _isSelectingkickAngle;
     public bool isSelectingkickAngle
     {
@@ -74,7 +76,11 @@ public class AnimeCharacter : Character
 
     private void UpdateKickAngle()
     {
-        if (!TryGetZadr(out _)) isSelectingkickAngle = false;
+        if (!TryGetZadr(out _))
+        {
+            isSelectingkickAngle = false;
+            animatorWrapper.SetTrigger(AnimatorWrapper.exitKickID);
+        }
         kickAngle += kickAngleChangeSpeed * Time.deltaTime;
         kickAngeArrow.transform.up = Vector3.Lerp(transform.right, transform.up, Mathf.PingPong(kickAngle, 1));
     }
@@ -82,8 +88,16 @@ public class AnimeCharacter : Character
     private void KickUpdate()
     {
         kickCD.UpdateTimer(Time.deltaTime);
-        if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady && !isSelectingkickAngle) isSelectingkickAngle = true;
-        else if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady && isSelectingkickAngle) Kick(Mathf.PingPong(kickAngle, 1));
+        if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady && !isSelectingkickAngle)
+        {
+            isSelectingkickAngle = true;
+            animatorWrapper.SetTrigger(AnimatorWrapper.enterKickID);
+        }
+        else if (Input.GetKeyDown(InputSettings.current.kick) && kickCD.isReady && isSelectingkickAngle)
+        {
+            Kick(Mathf.PingPong(kickAngle, 1));
+            animatorWrapper.SetTrigger(AnimatorWrapper.kickTriggerID);
+        }
         if (isSelectingkickAngle) UpdateKickAngle();
     }
 

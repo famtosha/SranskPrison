@@ -22,6 +22,7 @@ public class Walk : MoveBehavior
         characterMovement.AddForce(moveVector * Time.deltaTime);
         characterMovement.velocity = new Vector2(Mathf.Clamp(characterMovement.velocity.x, -speedLimit, speedLimit), characterMovement.velocity.y);
         if (moveDirection.x == 0f) Stop();
+        characterMovement.animatorWrapper.SetBool(AnimatorWrapper.isWalkingBoolID, moveDirection.x > 0.1f);
     }
 
     private void Stop()

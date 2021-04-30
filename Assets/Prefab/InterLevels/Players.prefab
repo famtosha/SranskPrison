@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 551585904579387128}
   - component: {fileID: 551585904579387131}
   - component: {fileID: 551585904579387127}
+  - component: {fileID: 2097591511006190756}
   m_Layer: 6
   m_Name: Gopa
   m_TagString: Untagged
@@ -158,6 +159,7 @@ MonoBehaviour:
   climb: {fileID: 11400000, guid: 75fc2b135f821e840bbf2c38a5950151, type: 2}
   nearLadder: {fileID: 0}
   defgravity: 0
+  animatorWrapper: {fileID: 0}
 --- !u!114 &551585904579387131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +177,7 @@ MonoBehaviour:
     _max: 4
     _health: 4
   selectIcon: {fileID: 6130424964265503853}
+  isActive: 0
   bulletPrefub: {fileID: 6903593669887284613, guid: ed2666ea9c9f54a4c8b01e7bcc5ad612, type: 3}
   gun: {fileID: 551585905474150776}
 --- !u!114 &551585904579387127
@@ -189,6 +192,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34350591646df5847b7b086a6b2413f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2097591511006190756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551585904579387132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76552d8a2eaa1dc4c9d09ce7c7ab203d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &551585904653571985
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +222,7 @@ GameObject:
   - component: {fileID: 551585904653571688}
   - component: {fileID: 8801318620552927611}
   - component: {fileID: 8957514535196452482}
+  - component: {fileID: 3058866844357087253}
   m_Layer: 6
   m_Name: Zadr
   m_TagString: Untagged
@@ -349,6 +366,7 @@ MonoBehaviour:
   climb: {fileID: 11400000, guid: 7088ed7e2e66e38438e9d4e9387b7b49, type: 2}
   nearLadder: {fileID: 0}
   defgravity: 0
+  animatorWrapper: {fileID: 0}
 --- !u!114 &551585904653571691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +384,7 @@ MonoBehaviour:
     _max: 4
     _health: 4
   selectIcon: {fileID: 6130424963667510364}
+  isActive: 0
   sleepDuration: 8
   sleepCoolDownDuration: 8
   biteRange: 1
@@ -502,6 +521,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3058866844357087253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551585904653571985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76552d8a2eaa1dc4c9d09ce7c7ab203d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8801318620552927611}
 --- !u!1 &551585905111173524
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +674,7 @@ GameObject:
   - component: {fileID: 551585905490743467}
   - component: {fileID: 310923374}
   - component: {fileID: 4639893952741066951}
+  - component: {fileID: 275029541529308438}
   m_Layer: 6
   m_Name: Anime
   m_TagString: Untagged
@@ -706,12 +739,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2535045891017549616, guid: f88b5888b48cb324cb948c6b5f86ea63, type: 3}
+  m_Sprite: {fileID: 4131642491878910383, guid: f88b5888b48cb324cb948c6b5f86ea63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -756,7 +789,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 0.5, y: 1}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -785,6 +818,7 @@ MonoBehaviour:
   climb: {fileID: 11400000, guid: 80dfb78a18db2e94ca7dd4bb34571efa, type: 2}
   nearLadder: {fileID: 0}
   defgravity: 0
+  animatorWrapper: {fileID: 275029541529308438}
 --- !u!114 &551585905490743470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +836,7 @@ MonoBehaviour:
     _max: 4
     _health: 4
   selectIcon: {fileID: 551585905598785670}
+  isActive: 0
   level:
     serializedVersion: 2
     m_Bits: 2147483648
@@ -814,6 +849,7 @@ MonoBehaviour:
   kickRange: 1
   kickAngleChangeSpeed: 1
   kickAngeArrow: {fileID: 2810850712590841298}
+  animatorWrapper: {fileID: 275029541529308438}
 --- !u!114 &551585905490743467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,6 +977,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &275029541529308438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551585905490743507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76552d8a2eaa1dc4c9d09ce7c7ab203d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 310923374}
 --- !u!1 &551585905598785670
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class Climb : MoveBehavior
         var min = characterMovement.nearLadder.min.position.y;
         var max = characterMovement.nearLadder.max.position.y;
         var clamped = Mathf.Clamp(current, min, max);
-
+        characterMovement.animatorWrapper.SetBool(AnimatorWrapper.isMovingOnLadderBoolID, Mathf.Abs(moveDirection.y) > 0.1f);
         characterMovement.MovePosition(transform.position.SetY(clamped));
         transform.position = transform.position.SetX(characterMovement.nearLadder.transform.position.x);
     }
@@ -39,10 +39,12 @@ public class Climb : MoveBehavior
         transform.position = transform.position.SetX(characterMovement.nearLadder.gameObject.transform.position.x);
         characterMovement.gravityScale = 0;
         characterMovement.velocity = new Vector2(0, 0);
+        characterMovement.animatorWrapper.SetTrigger(AnimatorWrapper.enterLadderTriggerID);
     }
 
     public override void Exit()
     {
         characterMovement.gravityScale = characterMovement.defgravity;
+        characterMovement.animatorWrapper.SetTrigger(AnimatorWrapper.exitLadderTriggerID);
     }
 }

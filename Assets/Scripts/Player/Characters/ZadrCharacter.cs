@@ -14,10 +14,8 @@ public class ZadrCharacter : Character, IPickupable
     public GameObject sleepSign;
     public LayerMask enemyLayer;
 
-    private Rigidbody2D rb;
     private Timer sleepCD;
     public Timer biteCD = new Timer(5);
-    private bool isKicked = false;
 
     private bool _isSleeping = false;
     public bool isSleeping
@@ -60,7 +58,6 @@ public class ZadrCharacter : Character, IPickupable
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         sleepCD = new Timer(sleepCoolDownDuration);
     }
 

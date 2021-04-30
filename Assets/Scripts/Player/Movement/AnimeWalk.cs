@@ -10,6 +10,7 @@ public class AnimeWalk : Walk
         if (characterMovement.IsGrounded())
         {
             characterMovement.AddForce(characterMovement.transform.up * jumpForce);
+            characterMovement.animatorWrapper.SetTrigger(AnimatorWrapper.jumpTriggerID);
             characterMovement.onJump?.Invoke();
         }
     }

@@ -11,14 +11,13 @@ public class Character : MonoBehaviour, IDamagable
     public UseAction useAction => new UseAction(isHacker, CharacterSelector.instance.playersInventory.inventory[playerID] as Key);
     public Health health = new Health(0, 4, 4);
 
-
     protected virtual bool isHacker => false;
     protected CharacterMovement move;
     protected Interacting interacting;
 
     [SerializeField] private GameObject selectIcon = null;
 
-    private bool isActive = false;
+    public bool isActive = false;
 
     public void Awake()
     {

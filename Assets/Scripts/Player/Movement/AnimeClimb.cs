@@ -10,5 +10,6 @@ public class AnimeClimb : Climb
         base.Jump();
         var transform = characterMovement.transform;
         characterMovement.AddForce((transform.right + transform.up).normalized * ladderJumpoffSpeed);
+        characterMovement.animatorWrapper.SetTrigger(AnimatorWrapper.jumpTriggerID);
     }
 }

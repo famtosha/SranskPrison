@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: dacbe051237c2d446ab625e7c41f38d6
+guid: f991e1e3dcc14f54c9778561a420b9c5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1638221722517425938
-    second: ZadrRun2_0
+      213: -2600962444786293554
+    second: AnimeKickExit_0
   - first:
-      213: -1075587466555385839
-    second: ZadrRun2_1
+      213: -1669122317951604043
+    second: AnimeKickExit_1
+  - first:
+      213: 293631266400073025
+    second: AnimeKickExit_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ZadrRun2_0
+      name: AnimeKickExit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +114,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21fcaf91af12cb610800000000000000
-      internalID: 1638221722517425938
+      spriteID: ec4a16cdf6687ebd0800000000000000
+      internalID: -2600962444786293554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ZadrRun2_1
+      name: AnimeKickExit_1
       rect:
         serializedVersion: 2
         x: 128
@@ -132,8 +135,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1189a1bd5eeb211f0800000000000000
-      internalID: -1075587466555385839
+      spriteID: 5ba61df581616d8e0800000000000000
+      internalID: -1669122317951604043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimeKickExit_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14579b0c410331400800000000000000
+      internalID: 293631266400073025
       vertices: []
       indices: 
       edges: []

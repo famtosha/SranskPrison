@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     public Ladder nearLadder;
     public float defgravity;
     public Action onJump;
+    public AnimatorWrapper animatorWrapper;
 
     private bool isActive = true;
     private Rigidbody2D rb;

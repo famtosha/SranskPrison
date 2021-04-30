@@ -2,7 +2,7 @@
 
 public class LaserDrawer : MonoBehaviour
 {
-    [SerializeField] private GameObject laserPrefub;
+    [SerializeField] private GameObject laserPrefub = null;
     private GameObject _laserInstance;
     public GameObject laserInstance
     {
