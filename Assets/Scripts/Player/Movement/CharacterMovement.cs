@@ -58,6 +58,7 @@ public class CharacterMovement : MonoBehaviour
         if (!isOnLadder && nearLadder) TryGrabLadder();
         if (isOnLadder && nearLadder == null) LeaveLadder();
         if (isActive && Input.GetKeyDown(InputSettings.current.jump)) currentMoveBehavior.Jump();
+        if (!isActive) animatorWrapper.SetBool(AnimatorWrapper.isWalkingBoolID, false);
         Move();
         ClampRamp();
     }
