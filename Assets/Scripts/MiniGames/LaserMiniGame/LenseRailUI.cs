@@ -20,7 +20,6 @@ public class LenseRailUI : MonoBehaviour, IDragHandler
             {
                 rail.SetPosition(hit.point);
             }
-
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class Lense : MonoBehaviour, ILaserReciver
 {
@@ -10,7 +11,7 @@ public class Lense : MonoBehaviour, ILaserReciver
     public void ReciveLaser(Vector3 hitPoint)
     {
         wasRecivedLastFrame = true;
-        if (CreateLaser(transform.position, GetLaserDirection(hitPoint), out var hit))
+        if (CreateLaser(transform.position, -GetLaserDirection(hitPoint), out var hit))
         {
             if (hit.collider.gameObject.TryGetComponent(out ILaserReciver reciver))
             {
@@ -33,9 +34,12 @@ public class Lense : MonoBehaviour, ILaserReciver
         wasRecivedLastFrame = false;
     }
 
-    private bool CreateLaser(Vector3 source, Vector3 direction, out RaycastHit hit)
+    private bool CreateLaser(Vector2 source, Vector2 direction, out RaycastHit2D hit)
     {
-        return Physics.Raycast(source, -direction, out hit, 100, minigameLayer);
+        var hits = Physics2D.RaycastAll(source, direction, minigameLayer).ToList();
+        hits = hits.Where(x => x.collider.gameObject != gameObject).ToList();
+        hit = hits[0];
+        return hits.Count > 0;
     }
 
     private Vector3 GetLaserDirection(Vector3 hit)

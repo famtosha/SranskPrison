@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class EnterGate : MonoBehaviour, ILaserSource
 {
@@ -10,9 +11,12 @@ public class EnterGate : MonoBehaviour, ILaserSource
         CreateLaser();
     }
 
-    private bool CreateLaser(Vector3 source, Vector3 direction, out RaycastHit hit)
+    private bool CreateLaser(Vector2 source, Vector2 direction, out RaycastHit2D hit)
     {
-        return Physics.Raycast(source, direction, out hit, 100, minigameLayer);
+        var hits = Physics2D.RaycastAll(source, direction, minigameLayer).ToList();
+        hits = hits.Where(x => x.collider.gameObject != gameObject).ToList();
+        hit = hits[0];
+        return hits.Count > 0;
     }
 
     public void CreateLaser()

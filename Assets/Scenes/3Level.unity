@@ -3332,17 +3332,13 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 29
       objectReference: {fileID: 0}
-    - target: {fileID: 2828347461543690773, guid: 6e94cbbe814b119418d7f4d0c005a2e0, type: 3}
-      propertyPath: minigameLayer.m_Bits
-      value: 1073741824
-      objectReference: {fileID: 0}
     - target: {fileID: 4869252672701905045, guid: 6e94cbbe814b119418d7f4d0c005a2e0, type: 3}
       propertyPath: m_Name
       value: MiniGames
       objectReference: {fileID: 0}
     - target: {fileID: 4869252672701905045, guid: 6e94cbbe814b119418d7f4d0c005a2e0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4869252672701905050, guid: 6e94cbbe814b119418d7f4d0c005a2e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15418,7 +15414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 551585905490743504, guid: 146974577798f5746866536de3eac8af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.65999985
+      value: 8.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146974577798f5746866536de3eac8af, type: 3}
