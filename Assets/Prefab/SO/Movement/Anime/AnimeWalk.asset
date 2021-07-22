@@ -16,4 +16,4 @@ MonoBehaviour:
   stopSpeed: 20
   speedLimit: 0.1
   moveSpeedMultiply: {x: 1, y: 1}
-  jumpForce: 400
+  jumpForce: 500

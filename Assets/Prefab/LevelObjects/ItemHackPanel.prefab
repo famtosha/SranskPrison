@@ -222,4 +222,5 @@ MonoBehaviour:
   Info: {fileID: 3930446696948109300}
   doors:
   - {fileID: 0}
+  activateSound: {fileID: 8300000, guid: 67d18e75041b42c47a838030ba1d0621, type: 3}
   requireItemID: 0

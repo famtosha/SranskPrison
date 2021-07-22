@@ -5,7 +5,7 @@ public class GuardMoveBehavior : MonoBehaviour
 {
     public Rigidbody2D rb { get; set; }
     public LayerMask playerLayer;
-    public LayerMask floorLayer;
+    public LayerMask ignore;
 
     public float moveSpeed;
     public float floorCheckDistance;
@@ -32,7 +32,7 @@ public class GuardMoveBehavior : MonoBehaviour
 
     private bool CanSeeWall()
     {
-        return Physics2D.Raycast(transform.position, transform.right, floorCheckDistance, floorLayer);
+        return Physics2D.Raycast(transform.position, transform.right, floorCheckDistance,~ignore);
     }
 
     private bool IsWayClear()
@@ -42,12 +42,12 @@ public class GuardMoveBehavior : MonoBehaviour
 
     private bool CanSeeGround()
     {
-        return Physics2D.Raycast(transform.position, transform.right + -transform.up, floorCheckDistance, floorLayer);
+        return Physics2D.Raycast(transform.position, transform.right + -transform.up, floorCheckDistance, ~ignore);
     }
 
     public bool IsGrounded()
     {
-        return Physics2D.Raycast(transform.position, -transform.up, hight, floorLayer);
+        return Physics2D.Raycast(transform.position, -transform.up, hight, ~ignore);
     }
 
     private void TurnAround()
@@ -58,7 +58,7 @@ public class GuardMoveBehavior : MonoBehaviour
     public bool CanSeePlayer()
     {
         bool result = false;
-        var hit = Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer | floorLayer);
+        var hit = Physics2D.Raycast(transform.position, transform.right, lookDistance, playerLayer | ~ignore);
         if (hit)
         {
             result = hit.collider.gameObject.HasComponent<Character>();

@@ -25,7 +25,7 @@ public class GeneratorTrap : MonoBehaviour
     public void Shoot()
     {
         var lightning = Instantiate(lightningPrefub, lightOrigin.position, lightOrigin.rotation);
-        lightning.GetComponent<Rigidbody2D>().AddForce(transform.right * lightningSpeed);
+        lightning.GetComponent<Rigidbody2D>().AddForce(lightning.transform.right * lightningSpeed);
         shootCD.Reset();
         audioSource.PlayOneShot(shootSound);
     }

@@ -48,7 +48,10 @@ public class Panel : MonoBehaviour, IInteraction
             }
             if (!multiUse) isActive = !isActive;
         }
-        audioSource?.PlayOneShot(activateSound);
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(activateSound);
+        }
     }
 
     public virtual bool UseByCharacter(UseAction use)

@@ -251,9 +251,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  floorLayer:
+  ignore:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 5120
   moveSpeed: 0.1
   floorCheckDistance: 2
   lookDistance: 20
